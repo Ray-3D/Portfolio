@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raimonds Krastiņš</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body style="margin:0; background:#111010;">
+
+<style>
+  :root {
+    --ink: #b984ff;
+    --ink-muted: #b984ff;
+    --ink-dim: #5a5652;
+    --surface: #111010;
+    --surface-raised: #1a1917;
+    --surface-card: #201f1d;
+    --accent: #c8a97e;
+    --accent-dim: #6b5a44;
+    --border: rgba(200,169,126,0.15);
+    --border-soft: rgba(200,169,126,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body, .portfolio-root { font-family: var(--font-sans, 'Inter', sans-serif); background: var(--surface); color: var(--ink); }
+  .portfolio-root { min-height: 100vh; }
+
+  /* NAV */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 3rem; border-bottom: 0.5px solid var(--border); position: sticky; top: 0; background: rgba(17,16,16,0.95); backdrop-filter: blur(8px); z-index: 10; }
+  .nav-logo { font-size: 18px; font-weight: 500; letter-spacing: 0.08em; color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.06em; color: var(--ink-muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--ink); }
+
+  /* SECTIONS */
+  section { display: none; padding: 4rem 3rem; max-width: 1600px; margin: 0 auto; }
+  section.active { display: block; }
+
+  /* HERO */
+  .hero { text-align: center; padding: 6rem 3rem 5rem; }
+  .hero-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+  .hero-title { font-size: 56px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-sub { font-size: 16px; color: var(--ink-muted); line-height: 1.7; max-width: 480px; margin: 0 auto 5rem; }
+  .hero-cta { display: inline-block; padding: 0.75rem 2rem; border: 0.5px solid var(--accent); color: var(--accent); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  .hero-cta:hover { background: var(--accent); color: var(--surface); }
+  .hero-divider { width: 60px; height: 0.5px; background: var(--accent-dim); margin: 2rem auto 0; }
+
+  /* WORKS */
+  .Works-header { margin-bottom: 2.5rem; }
+  .Works-header h2 { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .Works-header p { font-size: 24px; font-weight: 500; color: var(--ink); }
+  .Works-filter { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 18px; border: 0.5px solid var(--border); background: none; color: var(--ink-muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+  .Works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+  .Works-item { aspect-ratio: 1; background: var(--surface-card); overflow: hidden; position: relative; cursor: pointer; }
+  .Works-swatch { width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 1.25rem; transition: transform 0.4s ease; }
+  .Works-item:hover .Works-swatch { transform: scale(1.03); }
+  .Works-swatch-1 { background: linear-gradient(135deg, #1a0e2e 0%, #3d1a4a 40%, #7b2d5a 100%); }
+  .Works-swatch-2 { background: linear-gradient(160deg, #0d1a1f 0%, #1a3a3a 50%, #0f2a20 100%); }
+  .Works-swatch-3 { background: linear-gradient(145deg, #1f1209 0%, #4a2010 40%, #8b3a1a 100%); }
+  .Works-swatch-4 { background: linear-gradient(120deg, #080d1a 0%, #12224a 40%, #1a3366 100%); }
+  .Works-swatch-5 { background: linear-gradient(150deg, #0e0e14 0%, #1e1a2e 50%, #2d2040 100%); }
+  .Works-item-label { position: absolute; bottom: 0; padding: 1.25rem; z-index: 2; }
+  .Works-item-label span { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,228,220,0.5); }
+  .Works-item-label strong { display: block; font-size: 14px; font-weight: 500; color: var(--ink); }
+  .Works-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.3s; display: flex; align-items: center; justify-content: center; }
+  .Works-item:hover .Works-overlay { background: rgba(0,0,0,0.35); }
+  .Works-overlay-icon { opacity: 0; transition: opacity 0.3s; color: var(--accent); font-size: 24px; }
+  .Works-item:hover .Works-overlay-icon { opacity: 1; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 3rem; align-items: start; }
+  .about-portrait { aspect-ratio: 3/4; background: linear-gradient(160deg, #2d223b 0%, #2a1d3b 40%, #352f21 100%); border: 0.5px solid var(--border); overflow: hidden; }
+  .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .about-name { font-size: 36px; font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 1.5rem; }
+  .about-bio { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 2rem; }
+  .about-bio p + p { margin-top: 1rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .about-stat { border: 0.5px solid var(--border); padding: 1rem; }
+  .about-stat-num { font-size: 28px; font-weight: 500; color: var(--accent); }
+  .about-stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); margin-top: 2px; }
+  .about-tools-section { margin-bottom: 1.5rem; }
+  .about-tools-section .about-eyebrow { margin-bottom: 0.75rem; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .about-tag { padding: 4px 14px; border: 0.5px solid var(--border); font-size: 12px; letter-spacing: 0.06em; color: var(--ink-muted); }
+  .about-exhibitions-list p { font-size: 14px; color: var(--ink-muted); line-height: 2; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; }
+  .contact-info h2 { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .contact-info > p { font-size: 28px; font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 2rem; }
+  .contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+  .contact-detail-icon { width: 36px; height: 36px; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 16px; flex-shrink: 0; }
+  .contact-detail-text { font-size: 14px; color: var(--ink-muted); }
+  .contact-avail { margin-top: 2rem; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .contact-avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #4caf84; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); }
+  .form-field input, .form-field textarea, .form-field select { background: var(--surface-card); border: 0.5px solid var(--border); color: var(--ink); font-size: 14px; padding: 10px 14px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent-dim); }
+  .form-field textarea { resize: vertical; min-height: 100px; }
+  .form-field select option { background: var(--surface-card); }
+  .form-submit { margin-top: 0.5rem; padding: 12px; border: 0.5px solid var(--accent); background: none; color: var(--accent); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; font-family: inherit; }
+  .form-submit:hover { background: var(--accent); color: var(--surface); }
+
+  /* FOOTER */
+  footer { border-top: 0.5px solid var(--border-soft); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; margin-top: 4rem; }
+  footer p { font-size: 12px; color: var(--ink-dim); letter-spacing: 0.04em; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 12px; color: var(--ink-dim); text-decoration: none; cursor: pointer; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* LIGHTBOX */
+  #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; overflow-y: auto; padding: 2rem; }
+  #lightbox-inner { max-width: 900px; margin: 0 auto; padding-top: 2rem; }
+  #lightbox-media { display: flex; flex-direction: column; gap: 1rem; }
+  #lightbox-info { margin-top: 2rem; border-top: 0.5px solid var(--border); padding-top: 1.5rem; }
+  #lightbox-title { font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
+  #lightbox-desc p { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 1rem; }
+  #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--accent); font-size: 28px; cursor: pointer; z-index: 101; }
+  #lightbox-lang { position: fixed; bottom: 1.5rem; right: 2rem; background: none; border: 0.5px solid var(--accent-dim); color: var(--accent); font-size: 12px; letter-spacing: 0.1em; padding: 5px 14px; cursor: pointer; font-family: inherit; text-transform: uppercase; z-index: 101; transition: border-color 0.2s; }
+</style>
+
+<div class="portfolio-root">
+
+ <!-- NAV -->
+  <nav>
+    <div class="nav-logo"> · R · A · Y · &nbsp;&nbsp; <i class="ti ti-heart"></i> &nbsp;&nbsp; · C · G · I · </div>
+    <div style="display:flex; align-items:center; gap:2rem;">
+      <div class="nav-links">
+        <a href="#" class="active" data-section="hero" onclick="showSection('hero',this);return false;">Home</a>
+        <a href="#" data-section="Works" onclick="showSection('Works',this);return false;">Works</a>
+        <a href="#" data-section="about" onclick="showSection('about',this);return false;">About</a>
+        <a href="#" data-section="contact" onclick="showSection('contact',this);return false;">Contact</a>
+      </div>
+      <button id="lang-btn" onclick="toggleLang()" style="background:none; border:0.5px solid var(--accent-dim); color:var(--accent); font-size:12px; letter-spacing:0.1em; padding:5px 14px; cursor:pointer; font-family:inherit; text-transform:uppercase; transition: border-color 0.2s;">LV</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="active">
+    <div class="hero">
+      <p class="hero-eyebrow">Visual artist</p>
+      <h1 class="hero-title">RAIMONDS KRASTIŅŠ<br><em>–––––––––––––––––––</em></h1>
+      <p class="hero-sub">Exploring the space between digital and physical world – a collection of works in 3D animations, digital and traditional art.</p>
+      <div class="hero-cta" onclick="showSection('Works', document.querySelector('[data-section=Works]'))">View portfolio</div>
+      <div class="hero-divider"></div>
+    </div>
+  </section>
+
+ <!-- WORKS -->
+  <section id="Works">
+    <div class="Works-header">
+      <h2 id="works-eyebrow">Works</h2>
+      <p id="works-years">2020–2026</p>
+    </div>
+    <div class="Works-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="3d">3D Animations</button>
+      <button class="filter-btn" data-filter="mixed">Mixed Media</button>
+      <button class="filter-btn" data-filter="digital">Digital Paintings</button>
+      <button class="filter-btn" data-filter="traditional">Traditional Art</button>
+    </div>
+    <div class="Works-grid">
+
+<!-- ADD YOUR WORKS HERE — example: -->
+
+      <!-- FURBALL -->
+      <div class="Works-item" data-category="3d"
+        style="aspect-ratio:16/9; grid-column: span 1;"
+        data-title-en="Furball (2025)"
+        data-title-lv="Furball (2025)"
+        data-media='["https://i.imgur.com/xgxbMqm.jpeg","https://i.imgur.com/Px7sHv4.jpeg"]'
+        data-youtube="of7wESp2o6s">
+        <div class="work-desc-en" hidden>
+          <p>A 3D animation created in Blender using Geometry nodes.</p>
+        </div>
+        <div class="work-desc-lv" hidden>
+          <p>3D animācija, veidota Blender programmā, izmantojot Geometry nodes.</p>
+        </div>
+        <img src="https://i.imgur.com/xgxbMqm.jpeg" alt="Furball" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
+        <div class="Works-item-label"><span>3D Animation</span><strong>Furball (2025)</strong></div>
+      </div>
+
+      <!-- BENEATH THE WATER LEVEL -->
+      <div class="Works-item" data-category="3d"
+        style="aspect-ratio:16/9; grid-column: span 1;"
+        data-title-en="Beneath the Water Level (2025)"
+        data-title-lv="Zem ūdens līmeņa (2025)"
+        data-media='["https://i.imgur.com/Vr7iuj0.jpeg","https://i.imgur.com/B9ZTqYS.jpeg","https://i.imgur.com/FY6UgUh.jpeg"]'
+        data-youtube="bwcSmNVRyy4">
+        <div class="work-desc-en" hidden>
+          <p>A 3D animation created in Blender using liquid simulation.</p>
+          <p>A site-specific 3D animation created for the group exhibition "Virzienmaiņas" ("Shifts"). The work presents a speculative scenario in which the Daugava briefly alters its course and enters the Riga Contemporary Art Space.</p>
+          <p>Using a digitally reconstructed model of the gallery and Blender's fluid simulation system, the work visualizes water rushing down the entrance stairs and gradually transforming the familiar interior into an unfamiliar landscape.</p>
+        </div>
+        <div class="work-desc-lv" hidden>
+          <p>3D animācija, veidota Blender programmā, izmantojot šķidruma simulāciju.</p>
+          <p>Vietas specifiska 3D animācija, radīta grupu izstādei "Virzienmaiņas". Darbs piedāvā spekulatīvu scenāriju, kurā Daugava uz brīdi maina savu tecējumu un ieplūst Rīgas Laikmetīgās mākslas telpā.</p>
+          <p>Izmantojot digitāli rekonstruētu galerijas modeli un Blender šķidruma simulācijas sistēmu, darbs vizualizē ūdeni, kas plūst pa ieejas kāpnēm un pakāpeniski pārveido pazīstamo interjeru svešā ainavā.</p>
+        </div>
+        <img src="https://i.imgur.com/FY6UgUh.jpeg" alt="Beneath the Water Level" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
+        <div class="Works-item-label"><span>3D Animation</span><strong>Beneath the Water Level (2025)</strong></div>
+      </div>
+
+  <!-- ROŽU DD -->
+     <div class="Works-item" data-category="3d"
+  style="aspect-ratio:16/9; grid-column: span 1;"
+  data-title-en="Old_Riga_street_1993_08_13.mp4 (2022)"
+  data-title-lv="Vecrīgas_iela_1993_08_13.mp4 (2022)"
+  data-media='["https://i.imgur.com/8jidHKm.png","https://i.imgur.com/jfB2ZzO.png","https://i.imgur.com/jIHpQq7.png","https://i.imgur.com/RYtvC1c.png","https://i.imgur.com/tMyARpu.png","https://i.imgur.com/O9UEfZM.png","https://i.imgur.com/NX9smWA.png"]'
+  data-youtube="4q-2JPkJvX4">
+
+  <div class="work-desc-en" hidden>
+    <p>A 3D animation created in Blender.</p>
+    
+  </div>
+
+  <div class="work-desc-lv" hidden>
+    <p>3D animācija, veidota Blender programmā.</p>
+
+  </div>
+
+  <img src="https://i.imgur.com/NX9smWA.jpg" alt="Image missing :(" style="width:100%; height:100%; object-fit:cover; display:block;" /> 
+  <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
+  <div class="Works-item-label"><span>3D Render</span><strong>Beneath the Water Level (2025)</strong></div>
+</div>
+
+  </section>
+
+   <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+
+      <!-- Column 1: Portrait -->
+      <div class="about-portrait">
+        <img src="https://i.imgur.com/rmO4xeO.png" alt="Artist portrait" />
+      </div>
+
+      <!-- Column 2: Bio -->
+      <div>
+        <p class="about-eyebrow" id="about-eyebrow">The artist</p>
+        <h2 class="about-name">Raimonds Krastiņš</h2>
+        <div class="about-bio">
+          <p id="about-bio1">I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.</p>
+          <p id="about-bio2">In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor's degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.</p>
+          <p id="about-bio3">Through my work, I explore memories, places, and objects, creating art pieces that blur the boundaries between digital and physical space.</p>
+        </div>
+        <div class="about-tools-section">
+          <p class="about-eyebrow" id="tools-primary-label">Primary Tools</p>
+          <div class="about-tags" id="tags-primary">
+            <span class="about-tag">Blender</span>
+            <span class="about-tag">Adobe Photoshop</span>
+            <span class="about-tag">Adobe Premiere Pro</span>
+            <span class="about-tag">Adobe Illustrator</span>
+          </div>
+        </div>
+        <div class="about-tools-section">
+          <p class="about-eyebrow" id="tools-additional-label">Additional Experience</p>
+          <div class="about-tags" id="tags-additional">
+            <span class="about-tag">Unreal Engine</span>
+            <span class="about-tag">Reality Capture</span>
+            <span class="about-tag">TouchDesigner</span>
+            <span class="about-tag">Visual Studio Code</span>
+            <span class="about-tag">A-Frame</span>
+            <span class="about-tag">GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Stats + Exhibitions -->
+      <div>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="about-stat-num">4+</div>
+            <div class="about-stat-label" id="stat-years">Years active</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">3</div>
+            <div class="about-stat-label" id="stat-exhibitions">Exhibitions</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">100+</div>
+            <div class="about-stat-label" id="stat-works">Works</div>
+          </div>
+        </div>
+        <div class="about-tools-section">
+          <p class="about-eyebrow" id="about-exhibitions">Exhibitions &amp; Projects</p>
+          <div class="about-exhibitions-list">
+            <p id="about-exhibition3">2026 – "Atiestatīt rūpnīcas iestatījumus" <br>("Reset Factory Settings") – Riga, Latvia <br> <i class="ti ti-arrow-narrow-up-dashed"></i></p>
+            <p id="about-exhibition2">2025 – "Virzienmaiņas" ("Shifts") – Riga, Latvia <br> <i class="ti ti-arrow-narrow-up-dashed"></i></p>
+            <p id="about-project1">2024 – The Light Festival "Staro Rīga" – Riga, Latvia <br> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
+            <p id="about-exhibition1">2022/23 – "Ievārījums" ("Jam") – Latvia </p>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2 id="contact-eyebrow">Get in touch</h2>
+        <p id="contact-title">Available for commissions &amp; collaborations</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="ti ti-mail-filled" aria-hidden="true"></i></div>
+          <span class="contact-detail-text">rk.digitalprod@gmail.com</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="ti ti-map-pin-filled" aria-hidden="true"></i></div>
+          <span class="contact-detail-text">Latvia</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+          <a href="https://www.instagram.com/ray.cgi" target="_blank"
+   style="color:var(--ink-muted); text-decoration:none; transition:color 0.2s;"
+   onmouseover="this.style.color='var(--accent)'"
+   onmouseout="this.style.color='var(--ink-muted)'">@ray.cgi</a>
+        </div>
+
+<div class="contact-detail">
+          <div class="contact-detail-icon"><i class="ti ti-brand-tiktok" aria-hidden="true"></i></div>
+          <a href="https://www.tiktok.com/@rk_7eam" target="_blank"
+   style="color:var(--ink-muted); text-decoration:none; transition:color 0.2s;"
+   onmouseover="this.style.color='var(--accent)'"
+   onmouseout="this.style.color='var(--ink-muted)'">@rk_7eam</a>
+        </div>
+  
+  </section>
+
+  <footer>
+    <p>© 2026 Raimonds Krastiņš. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/ray.cgi" target="_blank"> <i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram</a>
+      <a href="https://www.tiktok.com/@rk_7eam" target="_blank"> <i class="ti ti-brand-tiktok" aria-hidden="true"></i> TikTok</a>
+    </div>
+  </footer>
+</div>
+
+<!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button id="lightbox-lang" onclick="toggleLang()">LV</button>
+    <div id="lightbox-inner">
+      <div id="lightbox-media"></div>
+      <div id="lightbox-info">
+        <h2 id="lightbox-title"></h2>
+        <div id="lightbox-desc"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .portfolio-root -->
+
+<script>
+const translations = {
+  en: {
+    nav: ['Home', 'Works', 'About', 'Contact'],
+    heroEyebrow: 'Visual artist',
+    heroTitle: 'RAIMONDS KRASTIŅŠ<br><em>–––––––––––––––––––</em>',
+    heroSub: 'Exploring the space between digital and physical world – a collection of works in 3D animations, digital and traditional art.',
+    heroCta: 'View portfolio',
+    worksEyebrow: 'Works',
+    worksYears: '2020–2026',
+    filters: ['All', '3D Animations', 'Mixed media', 'Digital paintings', 'Traditional art'],
+    aboutEyebrow: 'The artist',
+    aboutBio1: 'I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.',
+    aboutBio2: 'In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor\'s degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.',
+    aboutBio3: 'Through my work, I explore memories, places, and objects, creating art pieces that blur the boundaries between digital and physical space.',
+    statYears: 'Years active',
+    statExhibitions: 'Exhibitions',
+    statWorks: 'Works',
+    toolsPrimary: 'Primary Tools',
+    toolsAdditional: 'Additional Experience',
+    aboutExhibitions: 'Exhibitions & projects',
+    contactEyebrow: 'Get in touch',
+    contactTitle: 'Available for commissions & collaborations',
+    
+
+  },
+  lv: {
+    nav: ['Sākums', 'Darbi', 'Par mani', 'Kontakti'],
+    heroEyebrow: 'Vizuālais mākslinieks',
+    heroTitle: 'RAIMONDS KRASTIŅŠ<br><em>–––––––––––––––––––</em>',
+    heroSub: 'Pētot telpu starp digitālo un fizisko pasauli – darbu kolekcija 3D animācijās, digitālajā un tradicionālajā mākslā.',
+    heroCta: 'Skatīt portfolio',
+    worksEyebrow: 'Darbi',
+    worksYears: '2020–2026',
+    filters: ['Visi', '3D Animācijas', 'Jauktu mediju darbi', 'Digitālās gleznas', 'Tradicionālā māksla'],
+    aboutEyebrow: 'Mākslinieks',
+    aboutBio1: 'Esmu iesaistījies mākslā, cik vien sevi atceros. Kopš astoņu gadu vecuma esmu apmeklējis mākslas skolas un ārpusklases mākslas programmas, attīstot pamatus gan tradicionālās, gan mūsdienu mākslinieciskās praksēs.',
+    aboutBio2: '2022. gadā absolvēju Jaņa Rozentāla Mākslas skolu un 2026. gadā ieguvu bakalaura grādu vides mākslā Latvijas Mākslas akadēmijā. Pašlaik galvenokārt strādāju ar Blender, radot 3D mākslas darbus un animācijas, iedvesmojoties no liminālām telpām, nepamanītas arhitektūras un ikdienas vides atmosfēras.',
+    aboutBio3: 'Savos darbos pētu atmiņas, vietas un objektus, radot mākslas darbus, kas sapludina robežu starp digitālo un fizisko telpu.',
+    statYears: 'Aktīvie gadi',
+    statExhibitions: 'Izstādes',
+    statWorks: 'Darbi',
+    toolsPrimary: 'Galvenie rīki',
+    toolsAdditional: 'Papildu pieredze',
+    aboutExhibitions: 'Izstādes un projekti',
+    contactEyebrow: 'Sazinies',
+    contactTitle: 'Pieejams pasūtījumiem un sadarbībai',
+
+  }
+};
+
+let currentLang = 'en';
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'lv' : 'en';
+  applyLang(currentLang);
+}
+
+function applyLang(lang) {
+  const t = translations[lang];
+  const label = lang === 'en' ? 'LV' : 'EN';
+
+  document.getElementById('lang-btn').textContent = label;
+  document.getElementById('lightbox-lang').textContent = label;
+
+  document.querySelectorAll('.nav-links a').forEach((a, i) => a.textContent = t.nav[i]);
+  document.querySelector('.hero-eyebrow').textContent = t.heroEyebrow;
+  document.querySelector('.hero-title').innerHTML = t.heroTitle;
+  document.querySelector('.hero-sub').textContent = t.heroSub;
+  document.querySelector('.hero-cta').textContent = t.heroCta;
+  document.getElementById('works-eyebrow').textContent = t.worksEyebrow;
+  document.getElementById('works-years').textContent = t.worksYears;
+  document.querySelectorAll('.filter-btn').forEach((b, i) => b.textContent = t.filters[i]);
+  document.getElementById('about-eyebrow').textContent = t.aboutEyebrow;
+  document.getElementById('about-bio1').textContent = t.aboutBio1;
+  document.getElementById('about-bio2').textContent = t.aboutBio2;
+  document.getElementById('about-bio3').textContent = t.aboutBio3;
+  document.getElementById('stat-years').textContent = t.statYears;
+  document.getElementById('stat-exhibitions').textContent = t.statExhibitions;
+  document.getElementById('stat-works').textContent = t.statWorks;
+  document.getElementById('tools-primary-label').textContent = t.toolsPrimary;
+  document.getElementById('tools-additional-label').textContent = t.toolsAdditional;
+  document.getElementById('about-exhibitions').textContent = t.aboutExhibitions;
+  document.getElementById('contact-eyebrow').textContent = t.contactEyebrow;
+  document.getElementById('contact-title').textContent = t.contactTitle;
+
+
+  // if lightbox is open, refresh its content in the new language
+  if (document.getElementById('lightbox').style.display === 'block' && window._activeLightboxItem) {
+    openLightbox(window._activeLightboxItem);
+  }
+}
+
+function showSection(id, link) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (link) link.classList.add('active');
+}
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.Works-item').forEach(item => {
+      item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none';
+    });
+  });
+});
+
+// Lightbox
+function openLightbox(item) {
+  window._activeLightboxItem = item;
+
+  const descKey = currentLang === 'lv' ? '.work-desc-lv' : '.work-desc-en';
+  const descEl = item.querySelector(descKey);
+  const titleKey = currentLang === 'lv' ? 'titleLv' : 'titleEn';
+  const title = item.dataset[titleKey] || '';
+  const media = JSON.parse(item.dataset.media || '[]');
+  const youtubeId = item.dataset.youtube || '';
+
+  document.getElementById('lightbox-title').textContent = title;
+
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  lightboxDesc.innerHTML = '';
+  if (descEl) {
+    descEl.querySelectorAll('p').forEach(p => {
+      if (!p.textContent.trim()) return;
+      const newP = document.createElement('p');
+      newP.textContent = p.textContent;
+      lightboxDesc.appendChild(newP);
+    });
+  }
+
+  const container = document.getElementById('lightbox-media');
+  container.innerHTML = '';
+  if (youtubeId) {
+    container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>`;
+  }
+  media.forEach(src => {
+    if (src.match(/\.(mp4|webm|mov)$/i)) {
+      container.innerHTML += `<video src="${src}" controls autoplay muted style="width:100%; border:0.5px solid var(--border);"></video>`;
+    } else {
+      container.innerHTML += `<img src="${src}" style="width:100%; display:block; border:0.5px solid var(--border);">`;
+    }
+  });
+  if (!youtubeId && media.length === 0) {
+    container.innerHTML = '<p style="color:var(--ink-dim); font-size:13px;">No media added yet.</p>';
+  }
+
+  document.getElementById('lightbox').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+document.querySelectorAll('.Works-item').forEach(item => {
+  item.addEventListener('click', () => openLightbox(item));
+});
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('lightbox-media').innerHTML = '';
+  window._activeLightboxItem = null;
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
