@@ -126,6 +126,47 @@
   #lightbox-desc p { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 1rem; }
   #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--accent); font-size: 28px; cursor: pointer; z-index: 101; }
   #lightbox-lang { position: fixed; bottom: 1.5rem; right: 2rem; background: none; border: 0.5px solid var(--accent-dim); color: var(--accent); font-size: 12px; letter-spacing: 0.1em; padding: 5px 14px; cursor: pointer; font-family: inherit; text-transform: uppercase; z-index: 101; transition: border-color 0.2s; }
+
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav { padding: 1rem 1.5rem; }
+  .nav-logo { font-size: 14px; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 11px; }
+
+  /* SECTIONS */
+  section { padding: 2rem 1.5rem; }
+
+  /* HERO */
+  .hero { padding: 3rem 1rem 2rem; }
+  .hero-title { font-size: 32px; }
+  .hero-sub { font-size: 14px; margin-bottom: 2.5rem; }
+
+  /* WORKS */
+  .Works-grid { grid-template-columns: 1fr; }
+  .Works-item { grid-column: span 1 !important; aspect-ratio: 16/9 !important; }
+
+  /* ABOUT — stack all 3 columns vertically */
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-portrait { aspect-ratio: 4/3; }
+  .about-name { font-size: 26px; }
+  .about-stats { grid-template-columns: 1fr 1fr 1fr; }
+
+  /* CONTACT — stack columns vertically */
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-info > p { font-size: 20px; }
+
+  /* FOOTER */
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+
+  /* LIGHTBOX */
+  #lightbox { padding: 1rem; }
+  #lightbox-inner { padding-top: 3rem; }
+  #lightbox-title { font-size: 20px; }
+  #lightbox-close { top: 1rem; right: 1rem; font-size: 22px; }
+  #lightbox-lang { bottom: 1rem; right: 1rem; }
+}
 </style>
 
 <div class="portfolio-root">
