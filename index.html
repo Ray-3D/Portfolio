@@ -336,13 +336,15 @@
         </div>
         <div class="about-tools-section">
           <p class="about-eyebrow" id="about-exhibitions">Exhibitions &amp; Projects</p>
-          <div class="about-exhibitions-list">
-            <p id="about-exhibition3">2026 – "Atiestatīt rūpnīcas iestatījumus" <br>("Reset Factory Settings") – Riga, Latvia <br> <i class="ti ti-arrow-narrow-up-dashed"></i></p>
-            <p id="about-exhibition2">2025 – "Virzienmaiņas" ("Shifts") – Riga, Latvia <br> <i class="ti ti-arrow-narrow-up-dashed"></i></p>
-            <p id="about-project1">2024 – The Light Festival "Staro Rīga" – Riga, Latvia <br> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
-            <p id="about-exhibition1">2022/23 – "Ievārījums" ("Jam") – Latvia </p>
-            
           </div>
+                <div class="about-exhibitions-list">
+            <p id="about-exhibition3">2026 – Group exhbition "Reset Factory Settings" – Riga, Latvia</p>
+            <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
+            <p id="about-exhibition2">2025 – Group exhibition "Shifts" – Riga, Latvia</p>
+            <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
+            <p id="about-project1">2024 – The Light Festival "Staro Rīga" – Riga, Latvia</p>
+            <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
+            <p id="about-exhibition1">2022/23 – Group exhibition "Jam" – Latvia </p>
         </div>
       </div>
 
@@ -428,6 +430,10 @@ const translations = {
     aboutExhibitions: 'Exhibitions & projects',
     contactEyebrow: 'Get in touch',
     contactTitle: 'Available for commissions & collaborations',
+    aboutProject1: '2024 – The Light Festival "Staro Rīga" – Riga, Latvia',
+    aboutExhibition1: '2022/23 – Group exhibition "Jam" – Latvia',
+    aboutExhibition2: '2025 – Group exhibition "Shifts" – Riga, Latvia ',
+    aboutExhibition3: '2026 – Group exhbition "Reset Factory Settings" – Riga, Latvia ',
     
 
   },
@@ -452,6 +458,10 @@ const translations = {
     aboutExhibitions: 'Izstādes un projekti',
     contactEyebrow: 'Sazinies',
     contactTitle: 'Pieejams pasūtījumiem un sadarbībai',
+    aboutProject1: '2024 – Gaismas festivāls "Staro Rīga" – Rīga, Latvija',
+    aboutExhibition1: '2022/23 – Grupas izstade "Ievārījums" – Latvija',
+    aboutExhibition2: '2025 – Grupas izstāde "Virzienmaiņas" – Rīga, Latvija',
+    aboutExhibition3: '2026 – Grupas izstāde "Atiestatīt rūpnīcas iestatījumus" – Rīga, Latvija',
 
   }
 };
@@ -490,6 +500,10 @@ function applyLang(lang) {
   document.getElementById('about-exhibitions').textContent = t.aboutExhibitions;
   document.getElementById('contact-eyebrow').textContent = t.contactEyebrow;
   document.getElementById('contact-title').textContent = t.contactTitle;
+  document.getElementById('about-project1').textContent = t.aboutProject1;
+  document.getElementById('about-exhibition1').textContent = t.aboutExhibition1;
+  document.getElementById('about-exhibition2').textContent = t.aboutExhibition2;
+  document.getElementById('about-exhibition3').textContent = t.aboutExhibition3;
 
 
   // if lightbox is open, refresh its content in the new language
