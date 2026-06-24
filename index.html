@@ -395,7 +395,7 @@
         data-title-en="Camera tracking (2024)"
         data-title-lv="Kameras kustības izsekošana (2024)"
         data-media='[""]'
-        data-youtube="pVVNAjkXkxs">
+        data-youtube='["pVVNAjkXkxs", "j-PSqpVyK_M"]'>
         <div class="work-desc-en" hidden>
           <p>Created as a 3D computer graphics coursework at the Art Academy of Latvia, this project explores camera tracking in Blender.</p>
         </div>
@@ -713,7 +713,7 @@ function openLightbox(item) {
   const titleKey = currentLang === 'lv' ? 'titleLv' : 'titleEn';
   const title = item.dataset[titleKey] || '';
   const media = JSON.parse(item.dataset.media || '[]');
-  const youtubeId = item.dataset.youtube || '';
+  const youtubeIds = JSON.parse(item.dataset.youtube || '[]'); // NOW AN ARRAY
 
   document.getElementById('lightbox-title').textContent = title;
 
@@ -730,17 +730,27 @@ function openLightbox(item) {
 
   const container = document.getElementById('lightbox-media');
   container.innerHTML = '';
-  if (youtubeId) {
-    container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>`;
+
+  // LOOP through all YouTube videos
+  if (Array.isArray(youtubeIds)) {
+    youtubeIds.forEach(id => {
+      container.innerHTML += `<iframe src="https://www.youtube.com/embed/${id}" style="width:100%; aspect-ratio:16/9; border:none; margin-bottom:1rem;" allowfullscreen></iframe>`;
+    });
+  } else if (youtubeIds) {
+    // fallback for single string (backwards compatibility)
+    container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeIds}" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>`;
   }
+
+  // Then add other media files
   media.forEach(src => {
     if (src.match(/\.(mp4|webm|mov)$/i)) {
-      container.innerHTML += `<video src="${src}" controls autoplay muted style="width:100%; border:0.5px solid var(--border);"></video>`;
+      container.innerHTML += `<video src="${src}" controls autoplay muted style="width:100%; border:0.5px solid var(--border); margin-bottom:1rem;"></video>`;
     } else {
-      container.innerHTML += `<img src="${src}" style="width:100%; display:block; border:0.5px solid var(--border);">`;
+      container.innerHTML += `<img src="${src}" style="width:100%; display:block; border:0.5px solid var(--border); margin-bottom:1rem;">`;
     }
   });
-  if (!youtubeId && media.length === 0) {
+
+  if (!youtubeIds && media.length === 0) {
     container.innerHTML = '<p style="color:var(--ink-dim); font-size:13px;">No media added yet.</p>';
   }
 
