@@ -28,7 +28,7 @@
 
   /* NAV */
   nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 3rem; border-bottom: 0.5px solid var(--border); position: sticky; top: 0; background: rgba(17,16,16,0.95); backdrop-filter: blur(8px); z-index: 10; }
-  .nav-logo { font-size: 18px; font-weight: 500; letter-spacing: 0.08em; color: var(--accent); }
+  .nav-logo { font-size: 18px; font-weight: 500; letter-spacing: 0.08em; color: var(--accent); cursor: pointer; }
   .nav-links { display: flex; gap: 2rem; }
   .nav-links a { font-size: 13px; letter-spacing: 0.06em; color: var(--ink-muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
   .nav-links a:hover { color: var(--accent); }
@@ -42,7 +42,7 @@
 .hero { 
   text-align: center; 
   padding: 6rem 3rem 5rem;
-  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('images/profile-pic-wireframe-02.png');
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('images/');
   background-size: cover;
   background-position: center;
 
@@ -225,7 +225,25 @@
     </div>
     <div class="Works-grid">
 
-<!-- ADD YOUR WORKS HERE — example: -->
+<!-- ADD YOUR WORKS HERE -->
+
+<!-- 3D printed CRT TV -->
+      <div class="Works-item" data-category="mixed"
+        style="aspect-ratio:16/9; grid-column: span 1;"
+        data-title-en="Artist Book (2025)"
+        data-title-lv="Artist Book (2025)"
+        data-media='["https://i.imgur.com/WNEvnm8.jpeg", "https://i.imgur.com/fOwzveh.jpeg", "https://i.imgur.com/S8ubYQy.jpeg", "https://i.imgur.com/Fm6jdlf.jpeg", "https://i.imgur.com/EAtvtPV.jpeg"]'
+        >
+        <div class="work-desc-en" hidden>
+          <p>The work is designed as a spatial “artist book” format, using a 3D printed CRT television object that refers to the visual and technological environment of the author’s childhood. The television body serves as a framework for interchangeable lithophane 3D printed plates depicting the PlayStation video games played during childhood. In the process of creating the images, the game covers were deliberately moved during scanning, creating a blurred, deformed visuality that conceptually resonates with fragmented and subjectively transformed memories.</p>
+        </div>
+        <div class="work-desc-lv" hidden>
+          <p>Darbs veidots kā telpisks “artist book” formāts, izmantojot 3D printētu CRT televizora objektu, kas atsaucas uz autora bērnības vizuālo un tehnoloģisko vidi. Televizora korpuss kalpo kā ietvars maināmām lithophane tehnikā 3D printētām plāksnēm, kurās attēlotas bērnībā spēlētās PlayStation videospēles. Attēlu veidošanas procesā spēļu vāki tika apzināti kustināti skenēšanas laikā, radot izplūdušu, deformētu vizualitāti, kas konceptuāli sasaucas ar fragmentārām un subjektīvi transformētām atmiņām.</p>
+        </div>
+        <img src="https://i.imgur.com/EAtvtPV.jpeg" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
+        <div class="Works-item-label"><span>Mixed media</span><strong>Artist Book (2025)</strong></div>
+      </div>
 
       <!-- BENEATH THE WATER LEVEL -->
       <div class="Works-item" data-category="3d"
@@ -258,11 +276,9 @@
         data-youtube='["72PloNfSJec"]'>
         <div class="work-desc-en" hidden>
           <p>Created as a 3D computer graphics coursework at the Art Academy of Latvia. A procedural animation exploring fabric simulation using the Blender Geometry Nodes system. The project visualizes the process of weaving a denim-like material and sewing a logo onto the surface.</p>
-          
         </div>
         <div class="work-desc-lv" hidden>
           <p>Izveidots kā 3D datorgrafikas kursa darbs Latvijas Mākslas akadēmijā. Procedurāla animācija, kas pēta auduma simulāciju, izmantojot Blender Geometry Nodes sistēmu. Projekts vizualizē džinsam līdzīga materiāla aušanas un logotipa uzšūšanas procesu uz virsmas.</p>
-          
         </div>
         <img src="https://i.imgur.com/Mvi2Rrt.png" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
         <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
