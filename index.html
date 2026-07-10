@@ -249,6 +249,30 @@
         <div class="Works-item-label"><span>3D Animation</span><strong>3D advertisement (2026)</strong></div>
       </div>
 
+      <!-- OLA -->
+            <div class="Works-item" data-category="3d"
+  style="aspect-ratio:16/9; grid-column: span 2;"
+  data-title-en="OLA – 3D Interactive Space (2024)"
+  data-title-lv="OLA – 3D interaktīvā telpa (2024)"
+  data-aframe-url="https://yourusername.github.io/your-repo-name/aframe-project/">
+
+  <div class="work-desc-en" hidden>
+    <p>An immersive WebXR experience built with A-Frame.</p>
+    <p>Navigate through a 3D gallery space using WASD or arrow keys. Compatible with VR headsets for full immersion.</p>
+  </div>
+
+  <div class="work-desc-lv" hidden>
+    <p>Imersīva WebXR pieredze, veidota ar A-Frame.</p>
+    <p>Pārvietojieties pa 3D galerijas telpu, izmantojot WASD vai bultiņu taustiņus. Saderīga ar VR acs brillēm.</p>
+  </div>
+
+  <!-- Upload a thumbnail to Cloudinary -->
+  <img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1234567890/ola-thumbnail.jpg" alt="OLA 3D Space" style="width:100%; height:100%; object-fit:cover; display:block;" />
+  
+  <div class="Works-overlay"><i class="ti ti-player-play Works-overlay-icon"></i></div>
+  <div class="Works-item-label"><span>WebXR Experience</span><strong>OLA Foundation – Interactive Space (2026)</strong></div>
+</div>
+
 <!-- 3D printed CRT TV -->
       <div class="Works-item" data-category="mixed"
         style="aspect-ratio:16/9; grid-column: span 1;"
@@ -863,7 +887,8 @@ function openLightbox(item) {
   const titleKey = currentLang === 'lv' ? 'titleLv' : 'titleEn';
   const title = item.dataset[titleKey] || '';
   const media = JSON.parse(item.dataset.media || '[]');
-  const youtubeIds = JSON.parse(item.dataset.youtube || '[]'); // NOW AN ARRAY
+  const youtubeIds = JSON.parse(item.dataset.youtube || '[]');
+  const aframeUrl = item.dataset.aframeUrl || ''; // NEW
 
   document.getElementById('lightbox-title').textContent = title;
 
@@ -881,17 +906,39 @@ function openLightbox(item) {
   const container = document.getElementById('lightbox-media');
   container.innerHTML = '';
 
-  // LOOP through all YouTube videos
+  // Handle A-Frame embedded iframe
+  if (aframeUrl) {
+    container.innerHTML = `
+      <div style="position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 1rem;">
+        <iframe id="aframe-iframe" src="${aframeUrl}" style="width:100%; height:100%; border:none; border-radius:4px;" allow="xr-spatial-tracking; accelerometer; magnetometer; gyroscope"></iframe>
+        <button id="fullscreen-btn" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: var(--accent); border: 0.5px solid var(--accent); padding: 8px 12px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; z-index: 10; font-family: inherit; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.6)'">
+          Open Full Screen
+        </button>
+      </div>
+    `;
+    
+    // Add click handler for fullscreen button
+    setTimeout(() => {
+      const btn = document.getElementById('fullscreen-btn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          window.open(aframeUrl, '_blank');
+        });
+      }
+    }, 100);
+    return; // Don't process YouTube/media for A-Frame projects
+  }
+
+  // Handle YouTube videos (existing code)
   if (Array.isArray(youtubeIds)) {
     youtubeIds.forEach(id => {
       container.innerHTML += `<iframe src="https://www.youtube.com/embed/${id}" style="width:100%; aspect-ratio:16/9; border:none; margin-bottom:1rem;" allowfullscreen></iframe>`;
     });
   } else if (youtubeIds) {
-    // fallback for single string (backwards compatibility)
     container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeIds}" style="width:100%; aspect-ratio:16/9; border:none;" allowfullscreen></iframe>`;
   }
 
-  // Then add other media files
+  // Handle other media files
   media.forEach(src => {
     if (src.match(/\.(mp4|webm|mov)$/i)) {
       container.innerHTML += `<video src="${src}" controls autoplay muted style="width:100%; border:0.5px solid var(--border); margin-bottom:1rem;"></video>`;
@@ -900,30 +947,13 @@ function openLightbox(item) {
     }
   });
 
-  if (!youtubeIds && media.length === 0) {
+  if (!aframeUrl && !youtubeIds && media.length === 0) {
     container.innerHTML = '<p style="color:var(--ink-dim); font-size:13px;">No media added yet.</p>';
   }
 
   document.getElementById('lightbox').style.display = 'block';
   document.body.style.overflow = 'hidden';
 }
-
-document.querySelectorAll('.Works-item').forEach(item => {
-  item.addEventListener('click', () => openLightbox(item));
-});
-
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('lightbox-media').innerHTML = '';
-  window._activeLightboxItem = null;
-}
-
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeLightbox();
-});
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
 </body>
