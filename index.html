@@ -11,13 +11,13 @@
 
 <style>
   :root {
-    --ink: #b984ff;
+    --ink: rgb(185, 132, 255);
     --ink-muted: #b984ff;
     --ink-dim: #5a5652;
     --surface: #111010;
     --surface-raised: #1a1917;
     --surface-card: #201f1d;
-    --accent: #c8a97e;
+    --accent: rgb(200, 169, 126);
     --accent-dim: #6b5a44;
     --border: rgba(200,169,126,0.15);
     --border-soft: rgba(200,169,126,0.08);
@@ -35,14 +35,14 @@
   .nav-links a.active { color: var(--ink); }
 
   /* SECTIONS */
-  section { display: none; padding: 4rem 3rem; max-width: 1600px; margin: 0 auto; }
+  section { display: none; padding: 4rem 6rem; max-width: 2560px; margin: 0 auto; }
   section.active { display: block; }
 
   /* HERO */
 .hero { 
   text-align: center; 
-  padding: 6rem 3rem 5rem;
-  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('images/');
+  padding: 10rem 3rem 5rem;
+  background-image: linear-gradient(rgb(185, 132, 255, 0.08), rgba(0,0,0,0.0)), url('images/');
   background-size: cover;
   background-position: center;
 
@@ -50,9 +50,9 @@
   .hero-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
   .hero-title { font-size: 56px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 2rem; }
   .hero-title em { font-style: italic; color: var(--accent); }
-  .hero-sub { font-size: 16px; color: var(--ink-muted); line-height: 1.7; max-width: 480px; margin: 0 auto 5rem; }
-  .hero-cta { display: inline-block; padding: 0.75rem 2rem; border: 0.5px solid var(--accent); color: var(--accent); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; }
-  .hero-cta:hover { background: var(--accent); color: var(--surface); }
+  .hero-sub { font-size: 16px; color: var(--accent); line-height: 1.7; max-width: 480px; margin: 0 auto 5rem; }
+  .hero-cta { display: inline-block; padding: 0.75rem 2rem; border: 0.5px solid var(--ink); color: var(--ink); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  .hero-cta:hover { background: var(--ink); color: var(--surface); }
   .hero-divider { width: 60px; height: 0.5px; background: var(--accent-dim); margin: 2rem auto 0; }
 
   /* WORKS */
@@ -203,8 +203,8 @@
   <section id="hero" class="active">
     <div class="hero">
       <p class="hero-eyebrow">Visual artist</p>
-      <h1 class="hero-title">RAIMONDS KRASTIŅŠ<br><em>· 3D Modeling · 3D Animation · Environment Art ·</em></h1>
-      <p class="hero-sub">Exploring the space between digital and physical world – a collection of works in 3D animations, digital and traditional art.</p>
+      <h1 class="hero-title">RAIMONDS KRASTIŅŠ</h1>
+      <p class="hero-sub">· 3D Modeling · 3D Animation · Environment Art ·</p>
       <div class="hero-cta" onclick="showSection('Works', document.querySelector('[data-section=Works]'))">View portfolio</div>
       <div class="hero-divider"></div>
     </div>
@@ -791,12 +791,12 @@ const translations = {
   en: {
     nav: ['Home', 'Works', 'About', 'Contact'],
     heroEyebrow: 'Visual artist',
-    heroTitle: 'RAIMONDS KRASTIŅŠ<br><em>· 3D Modeling · 3D Animation · Environment Art ·</em>',
-    heroSub: 'Exploring the space between digital and physical world – a collection of works in 3D animations, digital and traditional art.',
+    heroTitle: 'RAIMONDS KRASTIŅŠ',
+    heroSub: '· 3D Modeling · 3D Animation · Environment Art ·',
     heroCta: 'View portfolio',
     worksEyebrow: 'Works',
     worksYears: '2020–2026',
-    filters: ['All', '3D Animations', 'Mixed media', 'Digital paintings', 'Traditional art'],
+    filters: ['All', '3D Animations', 'Mixed media', 'Traditional art'],
     aboutEyebrow: 'The artist',
     aboutBio1: 'I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.',
     aboutBio2: 'In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor\'s degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.',
@@ -819,12 +819,12 @@ const translations = {
   lv: {
     nav: ['Sākums', 'Darbi', 'Par mani', 'Kontakti'],
     heroEyebrow: 'Vizuālais mākslinieks',
-    heroTitle: 'RAIMONDS KRASTIŅŠ<br><em>· 3D Modelēšana · 3D Animācija · Vides māksla ·</em>',
-    heroSub: 'Pētot telpu starp digitālo un fizisko pasauli – darbu kolekcija 3D animācijās, digitālajā un tradicionālajā mākslā.',
+    heroTitle: 'RAIMONDS KRASTIŅŠ',
+    heroSub: '· 3D Modelēšana · 3D Animācija · Vides māksla ·',
     heroCta: 'Skatīt portfolio',
     worksEyebrow: 'Darbi',
     worksYears: '2020–2026',
-    filters: ['Visi', '3D Animācijas', 'Jauktu mediju darbi', 'Digitālās gleznas', 'Tradicionālā māksla'],
+    filters: ['Visi', '3D Animācijas', 'Jauktu mediju darbi', 'Gleznas'],
     aboutEyebrow: 'Mākslinieks',
     aboutBio1: 'Esmu iesaistījies mākslā, cik vien sevi atceros. Kopš astoņu gadu vecuma esmu apmeklējis mākslas skolas un ārpusklases mākslas programmas, attīstot pamatus gan tradicionālās, gan mūsdienu mākslinieciskās praksēs.',
     aboutBio2: '2022. gadā absolvēju Jaņa Rozentāla Mākslas skolu un 2026. gadā ieguvu bakalaura grādu vides mākslā Latvijas Mākslas akadēmijā. Pašlaik galvenokārt strādāju ar Blender, radot 3D mākslas darbus un animācijas, iedvesmojoties no liminālām telpām, nepamanītas arhitektūras un ikdienas vides atmosfēras.',
