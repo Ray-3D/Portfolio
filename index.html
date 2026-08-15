@@ -39,12 +39,63 @@
   section.active { display: block; }
 
   /* HERO */
+
 .hero { 
+  position: relative; /* Anchor for the pseudo-element */
   text-align: center; 
-  padding: 10rem 3rem 5rem;
-  background-image: linear-gradient(rgb(185, 132, 255, 0.08), rgba(0,0,0,0.0)), url('images/');
-  background-size: cover;
+  padding: 10rem 1rem 2rem;
+  /* Keeps your original gradient background */
+  background-image: linear-gradient(rgba(185, 132, 255, 0.08), rgba(0, 0, 0, 0.0));
+  overflow: hidden; /* Prevents image from spilling outside */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 0%;
+  transform: translate(-50%, -50%); /* Centers the image */
+  
+  /* Size controls: adjust width/height to make image smaller */
+  width: 700px;  
+  height: 700px; 
+  
+  background-image: url('images/profile-pic-wireframe-04.png');
+  background-size: contain; /* Keeps full image without clipping */
+  background-repeat: no-repeat;
   background-position: center;
+  
+-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 100%;
+  transform: translate(-50%, -50%); /* Centers the image */
+  
+  /* Size controls: adjust width/height to make image smaller */
+  width: 700px;  
+  height: 700px; 
+  
+  background-image: url('images/profile-pic-wireframe-04.png');
+  background-size: contain; /* Keeps full image without clipping */
+  background-repeat: no-repeat;
+  background-position: center;
+  
+-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+/* Ensures all text, buttons, and dividers stay on top of the image */
+.hero > * {
+  position: relative;
+  z-index: 2;
+
+
+
 
 }
   .hero-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
@@ -200,15 +251,16 @@
   </nav>
 
   <!-- HERO -->
-  <section id="hero" class="active">
-    <div class="hero">
-      <p class="hero-eyebrow">Visual artist</p>
-      <h1 class="hero-title">RAIMONDS KRASTIŅŠ</h1>
-      <p class="hero-sub">· 3D Modeling · 3D Animation · Environment Art ·</p>
-      <div class="hero-cta" onclick="showSection('Works', document.querySelector('[data-section=Works]'))">View portfolio</div>
-      <div class="hero-divider"></div>
-    </div>
-  </section>
+<section id="hero" class="active">
+  <div class="hero">
+    <div class="hero-image"></div> <!-- Added container -->
+    <p class="hero-eyebrow">Visual artist</p>
+    <h1 class="hero-title">RAIMONDS KRASTIŅŠ</h1>
+    <p class="hero-sub">· 3D Modeling · 3D Animation · Environment Art ·</p>
+    <div class="hero-cta" onclick="showSection('Works', document.querySelector('[data-section=Works]'))">View portfolio</div>
+    <div class="hero-divider"></div>
+  </div>
+</section>
 
  <!-- WORKS -->
   <section id="Works">
@@ -795,7 +847,7 @@ const translations = {
     heroSub: '· 3D Modeling · 3D Animation · Environment Art ·',
     heroCta: 'View portfolio',
     worksEyebrow: 'Works',
-    worksYears: '2020–2026',
+    worksYears: '2022–2026',
     filters: ['All', '3D Animations', 'Mixed media', 'Traditional art'],
     aboutEyebrow: 'The artist',
     aboutBio1: 'I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.',
@@ -823,7 +875,7 @@ const translations = {
     heroSub: '· 3D Modelēšana · 3D Animācija · Vides māksla ·',
     heroCta: 'Skatīt portfolio',
     worksEyebrow: 'Darbi',
-    worksYears: '2020–2026',
+    worksYears: '2022–2026',
     filters: ['Visi', '3D Animācijas', 'Jauktu mediju darbi', 'Gleznas'],
     aboutEyebrow: 'Mākslinieks',
     aboutBio1: 'Esmu iesaistījies mākslā, cik vien sevi atceros. Kopš astoņu gadu vecuma esmu apmeklējis mākslas skolas un ārpusklases mākslas programmas, attīstot pamatus gan tradicionālās, gan mūsdienu mākslinieciskās praksēs.',
