@@ -189,6 +189,7 @@
   #lightbox-info { margin-top: 2rem; border-top: 0.5px solid var(--border); padding-top: 1.5rem; }
   #lightbox-title { font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
   #lightbox-desc p { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 1rem; }
+  #lightbox-desc p em { font-style: italic; color: var(--ink-muted); }
   #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--accent); font-size: 28px; cursor: pointer; z-index: 101; }
   #lightbox-lang { position: fixed; bottom: 1.5rem; right: 2rem; background: none; border: 0.5px solid var(--accent-dim); color: var(--accent); font-size: 12px; letter-spacing: 0.1em; padding: 5px 14px; cursor: pointer; font-family: inherit; text-transform: uppercase; z-index: 101; transition: border-color 0.2s; }
 
@@ -272,6 +273,7 @@
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="3d">3D Art</button>
       <button class="filter-btn" data-filter="mixed">Mixed Media</button>
+      <button class="filter-btn" data-filter="web">Immersive Web Environments</button>
      <!---  <button class="filter-btn" data-filter="digital">Digital Paintings</button> -->
       <button class="filter-btn" data-filter="traditional">Traditional Art</button>
     </div>
@@ -299,12 +301,12 @@
         <div class="work-desc-en" hidden>
           <p>The bachelor project “Immersed in a Pool of Nostalgia” is a mixed media installation that combines 3D animations with spatial elements. The center of the artwork is the swimming pool environment, which the author associates with childhood memories and emotionally saturated experiences. The swimming pool is analyzed in the work not only as a physical space, but also as an affective environment in which smell, sound, humidity, light, materiality and objects are able to activate nostalgic feelings. </p>
           <p>The installation uses digitally created 3D animations, two CRT monitors, five older generation monitors, podiums with mosaic tile decoration, 3D printing and olfactory elements. The visual aesthetics of the work use references to the environment of earlier digital technologies, low-resolution images and the fragmentary nature of childhood memories.</p>
-          <p></p>
+          <p><em>The work was exhibited at the Riga Contemporary Art Space in the exhibition "Reset Factory Settings" (29.05. – 21.06.2026.)</em></p>
         </div>
         <div class="work-desc-lv" hidden>
           <p>Bakalaura darbs “Iegrimstu nostalģijas baseinā” ir jauktu mediju instalācija, kurā apvienotas 3D animācijas ar telpiskiem elementiem. Mākslas darba centrā ir peldbaseina vide, kura autoram asociējas ar bērnības atmiņām un emocionāli piesātinātām pieredzēm. Peldbaseins darbā tiek analizēts ne tikai kā fiziska telpa, bet arī kā afektīva vide, kurā smarža, skaņa, mitrums, gaisma, materialitāte un objekti spēj aktivizēt nostalģiskas sajūtas.</p>
           <p>Instalācijā izmantotas digitāli veidotas 3D animācijas, divi CRT monitori, pieci vecākas paaudzes monitori, podesti ar mozaīkflīžu apdari, 3D druka un ožas elementi. Darba vizuālajā estētikā tiek izmantotas atsauces uz agrāku digitālo tehnoloģiju vidi, zemas izšķirtspējas attēlu un bērnības atmiņu fragmentāro raksturu.</p>
-          <p></p>
+          <p><em>Darbs tika eksponēts Rīgas Laikmetīgās mākslas telpā izstādē "Reset Factory Settings" (29.05. – 21.06.2026.)</em></p>
         </div>
         <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1786899512/IMG_6029_vnqri3.png" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
         <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
@@ -334,21 +336,21 @@
       </div>
 
       <!-- OLA -->
-            <div class="Works-item" data-category="3d"
+            <div class="Works-item" data-category="web"
             style="aspect-ratio:16/9; grid-column: span 1;"
             data-title-en="Ola Foundation– 3D Interactive Space (2026)"
             data-title-lv="Ola Foundation – 3D interaktīvā telpa (2026)"
            data-aframe-url="https://ray-3d.github.io/Portfolio/Aframe-Ola/">
 
   <div class="work-desc-en" hidden>
-    <p>An immersive WebXR experience built with A-Frame.</p>
+    <p>An immersive web space experience built with A-Frame.</p>
     <p>Navigate through a 3D gallery space using WASD or arrow keys and mouse to look around. Hold SHIFT to move faster.</p>
     <p>To start, press the left mouse button, and to exit – ESC button.</p>
-    <p>On mobile – hold 1 finger to go forward, hold 2 fingers to go back.</p>
+    <p>On mobile – hold 1 finger to go forward, hold 2 fingers to go backward.</p>
   </div>
 
   <div class="work-desc-lv" hidden>
-    <p>Imersīva WebXR pieredze, veidota ar A-Frame.</p>
+    <p>Imersīva tīmekļa vides pieredze, veidota ar A-Frame.</p>
     <p>Pārvietojieties pa 3D galerijas telpu, izmantojot WASD vai bultiņu taustiņus un peli, lai skatītos apkārt. Turi SHIFT pogu, lai kustētos ātrāk.</p>
     <p>Lai sāktu uzspied peles kreiso taustiņu, un lai izietu – ESC pogu.</p>
     <p>Mobilajā ierīcē – turiet nospiestu 1 pirkstu, lai kustētos uz priekšu, un 2 pirkstus, lai kustētos atpakaļgaitā.</p>
@@ -358,7 +360,7 @@
   <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1783702223/Ola-viewport-R12_olorox.png" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
   
   <div class="Works-overlay"><i class="ti ti-player-play Works-overlay-icon"></i></div>
-  <div class="Works-item-label"><span>WebXR Experience</span><strong>OLA Foundation – Interactive Space (2026)</strong></div>
+  <div class="Works-item-label"><span>Immersive Web Environment</span><strong>OLA Foundation – Interactive Space (2026)</strong></div>
 </div>
 
 <!-- 3D printed CRT TV -->
@@ -525,21 +527,21 @@
       </div>
 
             <!-- rigas birzha -->
-            <div class="Works-item" data-category="3d"
+            <div class="Works-item" data-category="web"
             style="aspect-ratio:16/9; grid-column: span 1;"
             data-title-en="Art Museum RIGA BOURSE – 3D Interactive Space (2025)"
             data-title-lv="Mākslas muzejs RĪGAS BIRŽA – 3D interaktīvā telpa (2025)"
            data-aframe-url="https://ray-3d.github.io/Portfolio/Rigas-birza-rework/">
 
   <div class="work-desc-en" hidden>
-    <p>An immersive WebXR experience built with A-Frame.</p>
+    <p>An immersive web space experience built with A-Frame.</p>
     <p>Navigate through a 3D gallery space using WASD or arrow keys and mouse to look around. Hold SHIFT to move faster.</p>
     <p>To start, press the left mouse button, and to exit – ESC button.</p>
-    <p>On mobile – hold 1 finger to go forward, hold 2 fingers to go back.</p>
+    <p>On mobile – hold 1 finger to go forward, hold 2 fingers to go backward.</p>
   </div>
 
   <div class="work-desc-lv" hidden>
-    <p>Imersīva WebXR pieredze, veidota ar A-Frame.</p>
+    <p>Imersīva tīmekļa vides pieredze, veidota ar A-Frame.</p>
     <p>Pārvietojieties pa 3D galerijas telpu, izmantojot WASD vai bultiņu taustiņus un peli, lai skatītos apkārt. Turi SHIFT pogu, lai kustētos ātrāk.</p>
     <p>Lai sāktu uzspied peles kreiso taustiņu, un lai izietu – ESC pogu.</p>
     <p>Mobilajā ierīcē – turiet nospiestu 1 pirkstu, lai kustētos uz priekšu, un 2 pirkstus, lai kustētos atpakaļgaitā.</p>
@@ -549,7 +551,7 @@
   <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1783709485/izstaades-render-04_tscdll.png" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
   
   <div class="Works-overlay"><i class="ti ti-player-play Works-overlay-icon"></i></div>
-  <div class="Works-item-label"><span>WebXR Experience</span><strong>Art Museum RIGA BOURSE – Interactive Space (2025)</strong></div>
+  <div class="Works-item-label"><span>Immersive Web Environment</span><strong>Art Museum RIGA BOURSE – Interactive Space (2025)</strong></div>
 </div>
 
       <!-- Staro Rīga -->
@@ -880,7 +882,7 @@ const translations = {
     heroCta: 'View portfolio',
     worksEyebrow: 'Works',
     worksYears: '2022–2026',
-    filters: ['All', '3D Animations', 'Mixed media', 'Traditional art'],
+    filters: ['All', '3D Art', 'Mixed media', 'Immersive Web Environments', 'Traditional art'],
     aboutEyebrow: 'The artist',
     aboutBio1: 'I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.',
     aboutBio2: 'In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor\'s degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.',
@@ -908,7 +910,7 @@ const translations = {
     heroCta: 'Skatīt portfolio',
     worksEyebrow: 'Darbi',
     worksYears: '2022–2026',
-    filters: ['Visi', '3D Animācijas', 'Jauktu mediju darbi', 'Gleznas'],
+    filters: ['Visi', '3D Māksla', 'Jauktu mediju darbi', 'Imersīvas tīmekļa vides', 'Gleznas'],
     aboutEyebrow: 'Mākslinieks',
     aboutBio1: 'Esmu iesaistījies mākslā, cik vien sevi atceros. Kopš astoņu gadu vecuma esmu apmeklējis mākslas skolas un ārpusklases mākslas programmas, attīstot pamatus gan tradicionālās, gan mūsdienu mākslinieciskās praksēs.',
     aboutBio2: '2022. gadā absolvēju Jaņa Rozentāla Mākslas skolu un 2026. gadā ieguvu bakalaura grādu vides mākslā Latvijas Mākslas akadēmijā. Pašlaik galvenokārt strādāju ar Blender, radot 3D mākslas darbus un animācijas, iedvesmojoties no liminālām telpām, nepamanītas arhitektūras un ikdienas vides atmosfēras.',
@@ -1015,16 +1017,16 @@ function openLightbox(item) {
   document.getElementById('lightbox-title').textContent = title;
 
   // Description
-  const lightboxDesc = document.getElementById('lightbox-desc');
-  lightboxDesc.innerHTML = '';
-  if (descEl) {
-    descEl.querySelectorAll('p').forEach(p => {
-      if (!p.textContent.trim()) return;
-      const newP = document.createElement('p');
-      newP.textContent = p.textContent;
-      lightboxDesc.appendChild(newP);
-    });
-  }
+const lightboxDesc = document.getElementById('lightbox-desc');
+lightboxDesc.innerHTML = '';
+if (descEl) {
+  descEl.querySelectorAll('p').forEach(p => {
+    if (!p.textContent.trim()) return;
+    const newP = document.createElement('p');
+    newP.innerHTML = p.innerHTML; // <--- Changed from textContent to innerHTML
+    lightboxDesc.appendChild(newP);
+  });
+}
 
   const container = document.getElementById('lightbox-media');
   container.innerHTML = '';
