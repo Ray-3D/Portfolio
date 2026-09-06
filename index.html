@@ -140,7 +140,7 @@
 
   /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 3rem; align-items: start; }
-  .about-portrait { aspect-ratio: 3/4; background: linear-gradient(160deg, #2d223b 0%, #2a1d3b 40%, #352f21 100%); border: 0.5px solid var(--border); overflow: hidden; }
+  .about-portrait { aspect-ratio: 30/38; background: linear-gradient(160deg, #2d223b 0%, #2a1d3b 40%, #352f21 100%); border: 2.5px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 2rem; }
   .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
   .about-name { font-size: 36px; font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 1.5rem; }
@@ -247,7 +247,7 @@
         <a href="#" data-section="about" onclick="showSection('about',this);return false;">About</a>
         <a href="#" data-section="contact" onclick="showSection('contact',this);return false;">Contact</a>
       </div>
-      <button id="lang-btn" onclick="toggleLang()" style="background:none; border:0.5px solid var(--accent-dim); color:var(--accent); font-size:12px; letter-spacing:0.1em; padding:5px 14px; cursor:pointer; font-family:inherit; text-transform:uppercase; transition: border-color 0.2s;">LV</button>
+      <button id="lang-btn" onclick="toggleLang()" style="background:none; border:0.5px solid var(--accent-dim); color:var(--accent) ; font-size:12px; letter-spacing:0.1em; padding:5px 14px; cursor:pointer; font-family:inherit; text-transform:uppercase; transition: border-color 0.2s;">LV</button>
     </div>
   </nav>
 
@@ -748,7 +748,7 @@
 
       <!-- Column 1: Portrait -->
       <div class="about-portrait">
-        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_900,q_auto,f_auto/v1783642206/Raimonds-Krastins-Portrets_gigf0a.png" alt="Artist portrait" />
+        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_900,q_auto,f_auto/v1783642206/Raimonds-Krastins-Portrets_gigf0a.png" alt="Artist portrait" style="width:100%; height:100%; object-fit:contain;" />
       </div>
 
       <!-- Column 2: Bio -->
