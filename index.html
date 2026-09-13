@@ -37,6 +37,14 @@
   #lang-btn { background:none; border:0.5px solid var(--accent-dim); color:var(--accent); font-size:12px; letter-spacing:0.1em; padding:5px 14px; cursor:pointer; font-family:inherit; text-transform:uppercase; transition: background 0.2s, color 0.2s, border-color 0.2s; }
   #lang-btn:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); }
 
+  /* LANGUAGE TOGGLE — every translated piece of content exists twice in the HTML
+     (once per language) and CSS just shows/hides the right copy, the same way
+     the work descriptions already work. No JS text-swapping dictionary needed. */
+  .i18n-lv, .i18n-lv-inline { display: none; }
+  body.is-lv .i18n-en, body.is-lv .i18n-en-inline { display: none; }
+  body.is-lv .i18n-lv { display: block; }
+  body.is-lv .i18n-lv-inline { display: inline; }
+
   /* SECTIONS */
   section { display: none; padding: 4rem 6rem; max-width: 2560px; margin: 0 auto; }
   section.active { display: block; }
@@ -145,11 +153,11 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 3rem; align-items: start; }
   .about-portrait { aspect-ratio: 30/38; background: linear-gradient(160deg, #2d223b 0%, #2a1d3b 40%, #352f21 100%); border: 2.5px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 2rem; }
   .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .about-eyebrow { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .about-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
   .about-name { font-size: 36px; font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 1.5rem; }
-  .about-bio { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 4rem; }
-  .about-bio p + p { margin-top: 1.2rem; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 4rem; }
+  .about-bio { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 2rem; }
+  .about-bio p + p { margin-top: 1rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
   .about-stat { border: 0.5px solid var(--border); padding: 1rem; }
   .about-stat-num { font-size: 28px; font-weight: 500; color: var(--accent); }
   .about-stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); margin-top: 2px; }
@@ -157,7 +165,7 @@
   .about-tools-section .about-eyebrow { margin-bottom: 0.75rem; }
   .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .about-tag { padding: 4px 14px; border: 0.5px solid var(--border); font-size: 12px; letter-spacing: 0.06em; color: var(--ink-muted); }
-  .about-exhibitions-list p { font-size: 16px; color: var(--ink-muted); line-height: 2; }
+  .about-exhibitions-list p { font-size: 14px; color: var(--ink-muted); line-height: 2; }
 
   /* CONTACT */
   .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; }
@@ -194,7 +202,7 @@
   #lightbox-desc p { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 1rem; }
   #lightbox-desc p em { font-style: italic; color: var(--ink-muted); }
   #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--accent); font-size: 28px; cursor: pointer; z-index: 101; }
-  #lightbox-lang { position: fixed; bottom: 1.5rem; right: 2rem; background: none; border: 0.5px solid var(--accent-dim); color: var(--accent); font-size: 12px; letter-spacing: 0.1em; padding: 5px 14px; cursor: pointer; font-family: inherit; text-transform: uppercase; z-index: 101; transition: border-color 0.2s; }
+  #lightbox-lang { position: fixed; bottom: 1.5rem; right: 2rem; background: none; border: 0.5px solid var(--accent-dim); color: var(--accent); font-size: 12px; letter-spacing: 0.1em; padding: 5px 14px; cursor: pointer; font-family: inherit; text-transform: uppercase; z-index: 101; transition: border-color 0.2s, background 0.2s, color 0.2s; }
   #lightbox-lang:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); }
 
 @media (max-width: 768px) { 
@@ -249,12 +257,13 @@
     <div class="nav-logo"><p style="text-align:center;" href="#" class="active" data-section="hero" onclick="showSection('hero',this);return false;">R A Y · C G I</p></div>
     <div class="nav-right">
       <div class="nav-links">
-        <a href="#" class="active" data-section="hero" onclick="showSection('hero',this);return false;">Home</a>
-        <a href="#" data-section="Works" onclick="showSection('Works',this);return false;">Works</a>
-        <a href="#" data-section="about" onclick="showSection('about',this);return false;">About</a>
-        <a href="#" data-section="contact" onclick="showSection('contact',this);return false;">Contact</a>
+        <a href="#" class="active" data-section="hero" onclick="showSection('hero',this);return false;"><span class="i18n-en-inline">Home</span><span class="i18n-lv-inline">Sākums</span></a>
+        <a href="#" data-section="Works" onclick="showSection('Works',this);return false;"><span class="i18n-en-inline">Works</span><span class="i18n-lv-inline">Darbi</span></a>
+        <a href="#" data-section="about" onclick="showSection('about',this);return false;"><span class="i18n-en-inline">About</span><span class="i18n-lv-inline">Par mani</span></a>
+        <a href="#" data-section="contact" onclick="showSection('contact',this);return false;"><span class="i18n-en-inline">Contact</span><span class="i18n-lv-inline">Kontakti</span></a>
       </div>
-      <button id="lang-btn" onclick="toggleLang()">LV</button>
+      <!-- Button always shows the OTHER language's label, i.e. what you'll switch to -->
+      <button id="lang-btn" onclick="toggleLang()"><span class="i18n-en-inline">LV</span><span class="i18n-lv-inline">EN</span></button>
     </div>
   </nav>
 
@@ -262,10 +271,12 @@
 <section id="hero" class="active">
   <div class="hero">
     <div class="hero-image"></div> <!-- Added container -->
-    <p class="hero-eyebrow">Visual artist</p>
+    <p class="hero-eyebrow i18n-en">Visual artist</p>
+    <p class="hero-eyebrow i18n-lv">Vizuālais mākslinieks</p>
     <h1 class="hero-title">RAIMONDS KRASTIŅŠ</h1>
-    <p class="hero-sub">· 3D Modeling · 3D Animation · Environment Art ·</p>
-    <div class="hero-cta" onclick="showSection('Works', document.querySelector('[data-section=Works]'))">View portfolio</div>
+    <p class="hero-sub i18n-en">· 3D Modeling · 3D Animation · Environment Art ·</p>
+    <p class="hero-sub i18n-lv">· 3D Modelēšana · 3D Animācija · Vides māksla ·</p>
+    <div class="hero-cta" onclick="showSection('Works', document.querySelector('[data-section=Works]'))"><span class="i18n-en-inline">View portfolio</span><span class="i18n-lv-inline">Skatīt portfolio</span></div>
     <div class="hero-divider"></div>
   </div>
 </section>
@@ -273,16 +284,17 @@
  <!-- WORKS -->
   <section id="Works">
     <div class="Works-header">
-      <h2 id="works-eyebrow">Works</h2>
-      <p id="works-years">2022–2026</p>
+      <h2 class="i18n-en">Works</h2>
+      <h2 class="i18n-lv">Darbi</h2>
+      <p>2022–2026</p>
     </div>
     <div class="Works-filter">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="3d">3D Art</button>
-      <button class="filter-btn" data-filter="mixed">Mixed Media</button>
-      <button class="filter-btn" data-filter="web">Immersive Web Environments</button>
+      <button class="filter-btn active" data-filter="all"><span class="i18n-en-inline">All</span><span class="i18n-lv-inline">Visi</span></button>
+      <button class="filter-btn" data-filter="3d"><span class="i18n-en-inline">3D Art</span><span class="i18n-lv-inline">3D Māksla</span></button>
+      <button class="filter-btn" data-filter="mixed"><span class="i18n-en-inline">Mixed Media</span><span class="i18n-lv-inline">Jauktu mediju darbi</span></button>
+      <button class="filter-btn" data-filter="web"><span class="i18n-en-inline">Immersive Web Environments</span><span class="i18n-lv-inline">Imersīvas tīmekļa vides</span></button>
      <!---  <button class="filter-btn" data-filter="digital">Digital Paintings</button> -->
-      <button class="filter-btn" data-filter="traditional">Traditional Art</button>
+      <button class="filter-btn" data-filter="traditional"><span class="i18n-en-inline">Traditional Art</span><span class="i18n-lv-inline">Gleznas</span></button>
     </div>
     <div class="Works-grid">
 
@@ -293,18 +305,17 @@
         style="aspect-ratio:16/9; grid-column: span 1;"
         data-title-en="&quot;Immersing in the Pool of Nostalgia&quot; (2026)"
         data-title-lv="&quot;Iegrimstu nostalģijas baseinā&quot; (2026)"
-                data-media='[
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899512/IMG_6029_vnqri3.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899530/IMG-10_z0vtpv.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899519/IMG-4_rvk3io.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899517/IMG-2_xnl7di.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899520/IMG-6_tbunu1.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899527/IMG-13_btoeum.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899523/IMG-9_ti9m0z.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899531/IMG-12_oayugg.png", "credit": "Photo: Dajana Jefremova"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786896654/R-15_uxekzg.png", "credit": "Photo: Anete Aramina"}
+        data-media='[
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899512/IMG_6029_vnqri3.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899530/IMG-10_z0vtpv.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899519/IMG-4_rvk3io.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899517/IMG-2_xnl7di.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899520/IMG-6_tbunu1.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899527/IMG-13_btoeum.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899523/IMG-9_ti9m0z.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786899531/IMG-12_oayugg.png", "credit": "Dajana Jefremova"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1786896654/R-15_uxekzg.png", "credit": "Anete Aramina"}
         ]'
-
         data-youtube='["0IHkZBr63Es"]'>
         <div class="work-desc-en" hidden>
           <p>The bachelor project “Immersed in a Pool of Nostalgia” is a mixed media installation that combines 3D animations with spatial elements. The center of the artwork is the swimming pool environment, which the author associates with childhood memories and emotionally saturated experiences. The swimming pool is analyzed in the work not only as a physical space, but also as an affective environment in which smell, sound, humidity, light, materiality and objects are able to activate nostalgic feelings. </p>
@@ -377,11 +388,11 @@
         data-title-en="Artist Book (2025)"
         data-title-lv="Artist Book (2025)"
         data-media='[
-         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/WNEvnm8_ev8n4y.jpg", "credit": "Photo: Laima Kalniņa"},
-         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/fOwzveh_uhi15u.jpg", "credit": "Photo: Laima Kalniņa"},
-         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/Fm6jdlf_pumzoy.jpg", "credit": "Photo: Laima Kalniņa"},
-         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/S8ubYQy_ozu4l5.jpg", "credit": "Photo: Laima Kalniņa"},
-         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640950/EAtvtPV_moqzps.jpg", "credit": "Photo: Raimonds Krastiņš"}
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/WNEvnm8_ev8n4y.jpg", "credit": "Laima Kalniņa"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/fOwzveh_uhi15u.jpg", "credit": "Laima Kalniņa"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/Fm6jdlf_pumzoy.jpg", "credit": "Laima Kalniņa"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783640948/S8ubYQy_ozu4l5.jpg", "credit": "Laima Kalniņa"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789335118/copy_of_eatvtpv_moqzps.jpg", "credit": "Raimonds Krastiņš"}
         ]'
         >
         <div class="work-desc-en" hidden>
@@ -390,7 +401,7 @@
         <div class="work-desc-lv" hidden>
           <p>Darbs veidots kā telpisks “artist book” formāts, izmantojot 3D printētu CRT televizora objektu, kas atsaucas uz autora bērnības vizuālo un tehnoloģisko vidi. Televizora korpuss kalpo kā ietvars maināmām lithophane tehnikā 3D printētām plāksnēm, kurās attēlotas bērnībā spēlētās PlayStation videospēles. Attēlu veidošanas procesā spēļu vāki tika apzināti kustināti skenēšanas laikā, radot izplūdušu, deformētu vizualitāti, kas konceptuāli sasaucas ar fragmentārām un subjektīvi transformētām atmiņām.</p>
         </div>
-        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1783640950/EAtvtPV_moqzps.jpg" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1789335118/copy_of_eatvtpv_moqzps.jpg" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
         <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
         <div class="Works-item-label"><span>Mixed Media</span><strong>Artist Book (2025)</strong></div>
       </div>
@@ -401,10 +412,10 @@
         data-title-en="&quot;Beneath the Water Level&quot; (2025)"
         data-title-lv="&quot;Zem ūdens līmeņa&quot; (2025)"
         data-media='[
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641129/pV2t5bP_lzsngp.jpg", "credit": "Photo: Raimonds Krastiņš"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641128/zHdgvgO_abn8bw.jpg", "credit": "Photo: Raimonds Krastiņš"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641125/6jUB5vh_ppsrwr.jpg", "credit": "Photo: Raimonds Krastiņš"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641124/bys11I5_wvnev9.jpg", "credit": "Photo: Raimonds Krastiņš"}
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641129/pV2t5bP_lzsngp.jpg", "credit": "Raimonds Krastiņš"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641128/zHdgvgO_abn8bw.jpg", "credit": "Raimonds Krastiņš"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641125/6jUB5vh_ppsrwr.jpg", "credit": "Raimonds Krastiņš"},
+        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641124/bys11I5_wvnev9.jpg", "credit": "Raimonds Krastiņš"}
         ]'
         data-youtube='["bwcSmNVRyy4"]'>
         <div class="work-desc-en" hidden>
@@ -568,9 +579,9 @@
         data-title-en="The Light Festival &quot;Staro Rīga&quot; (2024)"
         data-title-lv="Gaismas festivāls &quot;Staro Rīga&quot; (2024)"
         data-media='[
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641129/NtoQqwf_xbzoko.jpg", "credit": "Photo: Raimonds Krastiņš"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641128/23vThzw_c4cog7.jpg", "credit": "Photo: Raimonds Krastiņš"},
-        {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641129/YyW1Uwp_xipvxg.jpg", "credit": "Photo: Raimonds Krastiņš"}
+        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641129/NtoQqwf_xbzoko.jpg", 
+        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641128/23vThzw_c4cog7.jpg", 
+        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641129/YyW1Uwp_xipvxg.jpg"
         ]'
         data-youtube='["y4qQRz8uTlg", "h5-e7p_tGXU"]'>
         <div class="work-desc-en" hidden>
@@ -669,12 +680,12 @@
         data-title-en="Paintings 2024 1/2"
         data-title-lv="Gleznas 2024 1/2"
         data-media='[
-        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641898/wowpr2_zmegbt.png", 
-        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641888/bb-pr2_quh9w9.png", 
-        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641891/what4_rpeavp.png", 
-        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641873/sar-pr2_iv50bt.png", 
-        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641887/aa4_dfd9hq.png", 
-        "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641964/20240507_192243-3_jhzcyp.jpg"
+          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641898/wowpr2_zmegbt.png", "credit": "Photo: Raimonds Krastiņš"},
+          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641888/bb-pr2_quh9w9.png", "credit": "Photo: Raimonds Krastiņš"},
+          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641891/what4_rpeavp.png", "credit": "Photo: Raimonds Krastiņš"},
+          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641873/sar-pr2_iv50bt.png", "credit": "Photo: Raimonds Krastiņš"},
+          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641887/aa4_dfd9hq.png", "credit": "Photo: Raimonds Krastiņš"},
+          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1783641964/20240507_192243-3_jhzcyp.jpg", "credit": "Photo: Raimonds Krastiņš"}
         ]'
         >
         <div class="work-desc-en" hidden>
@@ -725,42 +736,6 @@
         <div class="Works-item-label"><span>3D Animation</span><strong>Air dancers in the forest (2024)</strong></div>
       </div>
 
-      <!-- Fishies0001.mp4 -->
-      <div class="Works-item" data-category="3d"
-        style="aspect-ratio:16/9; grid-column: span 1;"
-        data-title-en="&quot;Fishies0001.mp4&quot;  (2023)"
-        data-title-lv="&quot;Fishies0001.mp4&quot;  (2023)"
-        data-media='[""]'
-        data-youtube='["rhmGOgYMe1A"]'>
-        <div class="work-desc-en" hidden>
-          <p>This surreal scene, inspired by the aesthetic of Studio Ghibli and featuring fish swimming through the sky, was digitally created in Blender. Fish were 3D modeled and animated following Ian Hubert's "Lazy tutorial".</p>
-        </div>
-        <div class="work-desc-lv" hidden>
-          <p>Šī sirreālā, Ghibli studijas estētikas iedvesmotā aina ar debesīs peldošām zivīm tika digitāli veidota programmā Blender. Zivis tika 3D modelētas un animētas, izmantojot Ian Hubert “Lazy Tutorial” kā iedvesmu un pamatu darba procesā.</p>
-        </div>
-        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1788973221/copy_of_fishies0290_qhwtjr.png" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
-        <div class="Works-item-label"><span>3D Animation</span><strong>"Fishies0001.mp4" (2023)</strong></div>
-      </div>
-
-            <!-- Moths -->
-      <div class="Works-item" data-category="3d"
-        style="aspect-ratio:16/9; grid-column: span 1;"
-        data-title-en="&quot;Moths&quot;  (2023)"
-        data-title-lv="&quot;Naktstauriņi&quot;  (2023)"
-        data-media='[""]'
-        data-youtube='["o-1xn0WhXng"]'>
-        <div class="work-desc-en" hidden>
-          <p>This scene with moths circling around a street lamp was digitally created in Blender. Moths were 3D modeled and animated following Ian Hubert's "Lazy tutorial".</p>
-        </div>
-        <div class="work-desc-lv" hidden>
-          <p>Šī aina ar naktstauriņiem, kas riņķo ap ielu laternu, tika digitāli izveidota programmā Blender. Naktstauriņi tika 3D modelētas un animētas, sekojot Iana Hūberta "Lazy tutorial".</p>
-        </div>
-        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1788974023/street-lamp-25_wmbpij.png" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
-        <div class="Works-item-label"><span>3D Animation</span><strong>"Moths" (2023)</strong></div>
-      </div>
-
         <!-- ROŽU DD -->
      <div class="Works-item" data-category="3d"
   style="aspect-ratio:16/9; grid-column: span 1;"
@@ -797,15 +772,20 @@
 
       <!-- Column 2: Bio -->
       <div>
-        <p class="about-eyebrow" id="about-eyebrow">The artist</p>
+        <p class="about-eyebrow i18n-en">The artist</p>
+        <p class="about-eyebrow i18n-lv">Mākslinieks</p>
         <h2 class="about-name">Raimonds Krastiņš</h2>
         <div class="about-bio">
-          <p id="about-bio1">I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.</p>
-          <p id="about-bio2">In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor's degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.</p>
-          <p id="about-bio3">Through my work, I explore memories, places, and objects, creating art pieces that blur the boundaries between digital and physical space.</p>
+          <p class="i18n-en">I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.</p>
+          <p class="i18n-lv">Esmu iesaistījies mākslā, cik vien sevi atceros. Kopš astoņu gadu vecuma esmu apmeklējis mākslas skolas un ārpusklases mākslas programmas, attīstot pamatus gan tradicionālās, gan mūsdienu mākslinieciskās praksēs.</p>
+          <p class="i18n-en">In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor's degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.</p>
+          <p class="i18n-lv">2022. gadā absolvēju Jaņa Rozentāla Mākslas skolu un 2026. gadā ieguvu bakalaura grādu vides mākslā Latvijas Mākslas akadēmijā. Pašlaik galvenokārt strādāju ar Blender, radot 3D mākslas darbus un animācijas, iedvesmojoties no liminālām telpām, nepamanītas arhitektūras un ikdienas vides atmosfēras.</p>
+          <p class="i18n-en">Through my work, I explore memories, places, and objects, creating art pieces that blur the boundaries between digital and physical space.</p>
+          <p class="i18n-lv">Savos darbos pētu atmiņas, vietas un objektus, radot mākslas darbus, kas sapludina robežu starp digitālo un fizisko telpu.</p>
         </div>
         <div class="about-tools-section">
-          <p class="about-eyebrow" id="tools-primary-label">Primary Tools</p>
+          <p class="about-eyebrow i18n-en">Primary Tools</p>
+          <p class="about-eyebrow i18n-lv">Galvenie rīki</p>
           <div class="about-tags" id="tags-primary">
             <span class="about-tag">Blender</span>
             <span class="about-tag">Adobe Photoshop</span>
@@ -814,7 +794,8 @@
           </div>
         </div>
         <div class="about-tools-section">
-          <p class="about-eyebrow" id="tools-additional-label">Additional Experience</p>
+          <p class="about-eyebrow i18n-en">Additional Experience</p>
+          <p class="about-eyebrow i18n-lv">Papildu pieredze</p>
           <div class="about-tags" id="tags-additional">
             <span class="about-tag">Unreal Engine</span>
             <span class="about-tag">Reality Capture</span>
@@ -832,28 +813,36 @@
         <div class="about-stats">
           <div class="about-stat">
             <div class="about-stat-num">4+</div>
-            <div class="about-stat-label" id="stat-years">Years active</div>
+            <div class="about-stat-label i18n-en">Years active</div>
+            <div class="about-stat-label i18n-lv">Aktīvie gadi</div>
           </div>
           <div class="about-stat">
             <div class="about-stat-num">3</div>
-            <div class="about-stat-label" id="stat-exhibitions">Exhibitions</div>
+            <div class="about-stat-label i18n-en">Exhibitions</div>
+            <div class="about-stat-label i18n-lv">Izstādes</div>
           </div>
           <div class="about-stat">
             <div class="about-stat-num">100+</div>
-            <div class="about-stat-label" id="stat-works">Works</div>
+            <div class="about-stat-label i18n-en">Works</div>
+            <div class="about-stat-label i18n-lv">Darbi</div>
           </div>
         </div>
         <div class="about-tools-section">
-          <p class="about-eyebrow" id="about-exhibitions">Exhibitions &amp; Projects</p>
+          <p class="about-eyebrow i18n-en">Exhibitions &amp; Projects</p>
+          <p class="about-eyebrow i18n-lv">Izstādes un projekti</p>
           </div>
                 <div class="about-exhibitions-list">
-            <p id="about-exhibition3">2026 – Group exhbition <b>"Reset Factory Settings"</b> – Riga, Latvia</p>
+            <p class="i18n-en">2026 – Group exhbition "Reset Factory Settings" – Riga, Latvia</p>
+            <p class="i18n-lv">2026 – Grupas izstāde "Atiestatīt rūpnīcas iestatījumus" – Rīga, Latvija</p>
             <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
-            <p id="about-exhibition2">2025 – Group exhibition <b>"Shifts"</b> – Riga, Latvia</p>
+            <p class="i18n-en">2025 – Group exhibition "Shifts" – Riga, Latvia</p>
+            <p class="i18n-lv">2025 – Grupas izstāde "Virzienmaiņas" – Rīga, Latvija</p>
             <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
-            <p id="about-project1">2024 – The Light Festival <b>"Staro Rīga"</b> – Riga, Latvia</p>
+            <p class="i18n-en">2024 – The Light Festival "Staro Rīga" – Riga, Latvia</p>
+            <p class="i18n-lv">2024 – Gaismas festivāls "Staro Rīga" – Rīga, Latvija</p>
             <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
-            <p id="about-exhibition1">2022/23 – Group exhibition <b>"Jam"</b> – Latvia </p>
+            <p class="i18n-en">2022/23 – Group exhibition "Jam" – Latvia </p>
+            <p class="i18n-lv">2022/23 – Grupas izstade "Ievārījums" – Latvija</p>
         </div>
       </div>
 
@@ -864,16 +853,14 @@
   <section id="contact">
     <div class="contact-grid">
       <div class="contact-info">
-        <h2 id="contact-eyebrow">Get in touch</h2>
-        <p id="contact-title">Available for commissions &amp; collaborations</p>
+        <h2 class="i18n-en">Get in touch</h2>
+        <h2 class="i18n-lv">Sazinies</h2>
+        <p class="i18n-en">Available for commissions &amp; collaborations</p>
+        <p class="i18n-lv">Pieejams pasūtījumiem un sadarbībai</p>
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="ti ti-mail-filled" aria-hidden="true"></i></div>
-          <a href="mailto:rk.digitalprod@gmail.com" target="_blank"
-   style="color:var(--ink-muted); text-decoration:none; transition:color 0.2s;"
-   onmouseover="this.style.color='var(--accent)'"
-   onmouseout="this.style.color='var(--ink-muted)'">rk.digitalprod@gmail.com</a>
+          <span class="contact-detail-text">rk.digitalprod@gmail.com</span>
         </div>
-
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="ti ti-map-pin-filled" aria-hidden="true"></i></div>
           <span class="contact-detail-text">Latvia</span>
@@ -909,7 +896,7 @@
 <!-- LIGHTBOX -->
   <div id="lightbox">
     <button id="lightbox-close">✕</button>
-    <button id="lightbox-lang" onclick="toggleLang()">LV</button>
+    <button id="lightbox-lang" onclick="toggleLang()"><span class="i18n-en-inline">LV</span><span class="i18n-lv-inline">EN</span></button>
     <div id="lightbox-inner">
       <div id="lightbox-media"></div>
       <div id="lightbox-info">
@@ -920,105 +907,19 @@
   </div>
 
 <script>
-const translations = {
-  en: {
-    nav: ['Home', 'Works', 'About', 'Contact'],
-    heroEyebrow: 'Visual artist',
-    heroTitle: 'RAIMONDS KRASTIŅŠ',
-    heroSub: '· 3D Modeling · 3D Animation · Environment Art ·',
-    heroCta: 'View portfolio',
-    worksEyebrow: 'Works',
-    worksYears: '2022–2026',
-    filters: ['All', '3D Art', 'Mixed media', 'Immersive Web Environments', 'Traditional art'],
-    aboutEyebrow: 'The artist',
-    aboutBio1: 'I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.',
-    aboutBio2: 'In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor\'s degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.',
-    aboutBio3: 'Through my work, I explore memories, places, and objects, creating art pieces that blur the boundaries between digital and physical space.',
-    statYears: 'Years active',
-    statExhibitions: 'Exhibitions',
-    statWorks: 'Works',
-    toolsPrimary: 'Primary Tools',
-    toolsAdditional: 'Additional Experience',
-    aboutExhibitions: 'Exhibitions & projects',
-    contactEyebrow: 'Get in touch',
-    contactTitle: 'Available for commissions & collaborations',
-    aboutProject1: '2024 – The Light Festival "Staro Rīga" – Riga, Latvia',
-    aboutExhibition1: '2022/23 – Group exhibition "Jam" – Latvia',
-    aboutExhibition2: '2025 – Group exhibition "Shifts" – Riga, Latvia ',
-    aboutExhibition3: '2026 – Group exhbition "Reset Factory Settings" – Riga, Latvia ',
-    
-
-  },
-  lv: {
-    nav: ['Sākums', 'Darbi', 'Par mani', 'Kontakti'],
-    heroEyebrow: 'Vizuālais mākslinieks',
-    heroTitle: 'RAIMONDS KRASTIŅŠ',
-    heroSub: '· 3D Modelēšana · 3D Animācija · Vides māksla ·',
-    heroCta: 'Skatīt portfolio',
-    worksEyebrow: 'Darbi',
-    worksYears: '2022–2026',
-    filters: ['Visi', '3D Māksla', 'Jauktu mediju darbi', 'Imersīvas tīmekļa vides', 'Gleznas'],
-    aboutEyebrow: 'Mākslinieks',
-    aboutBio1: 'Esmu iesaistījies mākslā, cik vien sevi atceros. Kopš astoņu gadu vecuma esmu apmeklējis mākslas skolas un ārpusklases mākslas programmas, attīstot pamatus gan tradicionālās, gan mūsdienu mākslinieciskās praksēs.',
-    aboutBio2: '2022. gadā absolvēju Jaņa Rozentāla Mākslas skolu un 2026. gadā ieguvu bakalaura grādu vides mākslā Latvijas Mākslas akadēmijā. Pašlaik galvenokārt strādāju ar Blender, radot 3D mākslas darbus un animācijas, iedvesmojoties no liminālām telpām, nepamanītas arhitektūras un ikdienas vides atmosfēras.',
-    aboutBio3: 'Savos darbos pētu atmiņas, vietas un objektus, radot mākslas darbus, kas sapludina robežu starp digitālo un fizisko telpu.',
-    statYears: 'Aktīvie gadi',
-    statExhibitions: 'Izstādes',
-    statWorks: 'Darbi',
-    toolsPrimary: 'Galvenie rīki',
-    toolsAdditional: 'Papildu pieredze',
-    aboutExhibitions: 'Izstādes un projekti',
-    contactEyebrow: 'Sazinies',
-    contactTitle: 'Pieejams pasūtījumiem un sadarbībai',
-    aboutProject1: '2024 – Gaismas festivāls "Staro Rīga" – Rīga, Latvija',
-    aboutExhibition1: '2022/23 – Grupas izstade "Ievārījums" – Latvija',
-    aboutExhibition2: '2025 – Grupas izstāde "Virzienmaiņas" – Rīga, Latvija',
-    aboutExhibition3: '2026 – Grupas izstāde "Atiestatīt rūpnīcas iestatījumus" – Rīga, Latvija',
-
-  }
-};
-
+// Language state. Every translated piece of text already exists twice in the
+// HTML (an .i18n-en/.i18n-lv or .i18n-en-inline/.i18n-lv-inline pair, same
+// idea as the .work-desc-en/.work-desc-lv pattern used for work descriptions).
+// Switching language is just adding/removing a class on <body> — CSS does the
+// showing and hiding, so there's no text dictionary to keep in sync.
 let currentLang = 'en';
 
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'lv' : 'en';
-  applyLang(currentLang);
-}
+  document.body.classList.toggle('is-lv', currentLang === 'lv');
 
-function applyLang(lang) {
-  const t = translations[lang];
-  const label = lang === 'en' ? 'LV' : 'EN';
-
-  document.getElementById('lang-btn').textContent = label;
-  document.getElementById('lightbox-lang').textContent = label;
-
-  document.querySelectorAll('.nav-links a').forEach((a, i) => a.textContent = t.nav[i]);
-  document.querySelector('.hero-eyebrow').textContent = t.heroEyebrow;
-  document.querySelector('.hero-title').innerHTML = t.heroTitle;
-  document.querySelector('.hero-sub').textContent = t.heroSub;
-  document.querySelector('.hero-cta').textContent = t.heroCta;
-  document.getElementById('works-eyebrow').textContent = t.worksEyebrow;
-  document.getElementById('works-years').textContent = t.worksYears;
-  document.querySelectorAll('.filter-btn').forEach((b, i) => b.textContent = t.filters[i]);
-  document.getElementById('about-eyebrow').textContent = t.aboutEyebrow;
-  document.getElementById('about-bio1').textContent = t.aboutBio1;
-  document.getElementById('about-bio2').textContent = t.aboutBio2;
-  document.getElementById('about-bio3').textContent = t.aboutBio3;
-  document.getElementById('stat-years').textContent = t.statYears;
-  document.getElementById('stat-exhibitions').textContent = t.statExhibitions;
-  document.getElementById('stat-works').textContent = t.statWorks;
-  document.getElementById('tools-primary-label').textContent = t.toolsPrimary;
-  document.getElementById('tools-additional-label').textContent = t.toolsAdditional;
-  document.getElementById('about-exhibitions').textContent = t.aboutExhibitions;
-  document.getElementById('contact-eyebrow').textContent = t.contactEyebrow;
-  document.getElementById('contact-title').textContent = t.contactTitle;
-  document.getElementById('about-project1').textContent = t.aboutProject1;
-  document.getElementById('about-exhibition1').textContent = t.aboutExhibition1;
-  document.getElementById('about-exhibition2').textContent = t.aboutExhibition2;
-  document.getElementById('about-exhibition3').textContent = t.aboutExhibition3;
-
-
-  // if lightbox is open, refresh its content in the new language
+  // if the lightbox is open, refresh it (updates the description language and
+  // the "Photo:"/"Foto:" credit label)
   if (document.getElementById('lightbox').style.display === 'block' && window._activeLightboxItem) {
     openLightbox(window._activeLightboxItem);
   }
@@ -1047,10 +948,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 document.querySelectorAll('.Works-item').forEach(item => {
   item.addEventListener('click', () => openLightbox(item));
 });
- 
+
 function openLightbox(item) {
   window._activeLightboxItem = item;
- 
+
   const descKey = currentLang === 'lv' ? '.work-desc-lv' : '.work-desc-en';
   const descEl = item.querySelector(descKey);
   const titleKey = currentLang === 'lv' ? 'titleLv' : 'titleEn';
@@ -1058,9 +959,9 @@ function openLightbox(item) {
   const media = JSON.parse(item.dataset.media || '[]');
   const youtubeIds = JSON.parse(item.dataset.youtube || '[]');
   const aframeUrl = item.dataset.aframeUrl || '';
- 
+
   document.getElementById('lightbox-title').textContent = title;
- 
+
   // Description
   const lightboxDesc = document.getElementById('lightbox-desc');
   lightboxDesc.innerHTML = '';
@@ -1072,27 +973,27 @@ function openLightbox(item) {
       lightboxDesc.appendChild(newP);
     });
   }
- 
+
   const container = document.getElementById('lightbox-media');
   container.innerHTML = '';
- 
+
   // A-Frame projects
   if (aframeUrl) {
     const wrapper = document.createElement('div');
     wrapper.style.cssText = 'position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 1rem;';
- 
+
     const iframe = document.createElement('iframe');
     iframe.src = aframeUrl;
     iframe.style.cssText = 'width: 100%; height: 100%; border: none; border-radius: 4px;';
     iframe.setAttribute('allow', 'xr-spatial-tracking; accelerometer; magnetometer; gyroscope');
- 
+
     const btn = document.createElement('button');
     btn.textContent = 'Open Full Screen';
     btn.style.cssText = 'position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: var(--accent); border: 0.5px solid var(--accent); padding: 8px 12px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; z-index: 10; font-family: inherit; transition: background 0.2s;';
     btn.onmouseover = () => btn.style.background = 'rgba(0,0,0,0.8)';
     btn.onmouseout = () => btn.style.background = 'rgba(0,0,0,0.6)';
     btn.onclick = () => window.open(aframeUrl, '_blank');
- 
+
     wrapper.appendChild(iframe);
     wrapper.appendChild(btn);
     container.appendChild(wrapper);
@@ -1118,7 +1019,9 @@ function openLightbox(item) {
   // Other media (images, videos)
   // Each entry in `media` can be either:
   //   - a plain URL string (no credit shown), or
-  //   - an object like {"src": "https://...", "credit": "Photo: Jane Doe"}
+  //   - an object like {"src": "https://...", "credit": "Jane Doe"} — the "Photo:"/"Foto:"
+  //     label is added automatically based on the current language, so `credit` should
+  //     just be the photographer's name
   const hasRealMedia = media.some(m => (typeof m === 'string' ? m : m && m.src));
   if (media && media.length > 0) {
     media.forEach(entry => {
@@ -1126,7 +1029,7 @@ function openLightbox(item) {
       const src = typeof entry === 'string' ? entry : entry.src;
       const credit = typeof entry === 'object' ? entry.credit : null;
       if (!src) return;
- 
+
       if (src.match(/\.(mp4|webm|mov)$/i)) {
         const video = document.createElement('video');
         video.src = src;
@@ -1147,30 +1050,32 @@ function openLightbox(item) {
       }
     });
   }
- 
+
   if (!aframeUrl && (!youtubeIds || youtubeIds.length === 0) && !hasRealMedia) {
     container.innerHTML = '<p style="color:var(--ink-dim); font-size:13px;">No media added yet.</p>';
   }
- 
+
   document.getElementById('lightbox').style.display = 'block';
   document.body.style.overflow = 'hidden';
 }
- 
-// Small helper: builds the photographer-credit caption shown under a lightbox image
-function makeCredit(text) {
+
+// Small helper: builds the photographer-credit caption shown under a lightbox image.
+// `name` is just the photographer's name (e.g. "Raimonds Krastiņš") — the "Photo:"/"Foto:"
+// label is added here based on the current language.
+function makeCredit(name) {
+  const label = currentLang === 'lv' ? 'Foto' : 'Photo';
   const p = document.createElement('p');
-  p.textContent = text;
-  p.style.cssText = 'font-size: 14px; letter-spacing: 0.04em; color: var(--ink-dim); margin: -0.75rem 0 1rem; text-align: right;';
+  p.textContent = `${label}: ${name}`;
+  p.style.cssText = 'font-size: 11px; letter-spacing: 0.04em; color: var(--ink-dim); margin: -0.75rem 0 1rem; text-align: right;';
   return p;
 }
- 
+
 function closeLightbox() {
   document.getElementById('lightbox').style.display = 'none';
   document.body.style.overflow = '';
   document.getElementById('lightbox-media').innerHTML = '';
   window._activeLightboxItem = null;
 }
-
 
 // Close lightbox with close button
 document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
