@@ -11,7 +11,7 @@
 
 <style>
   :root {
-    --ink: rgb(185, 132, 255);
+    --ink: #b984ff;
     --ink-muted: #b984ff;
     --ink-dim: #5a5652;
     --surface: #111010;
@@ -46,7 +46,7 @@
   body.is-lv .i18n-lv-inline { display: inline; }
 
   /* SECTIONS */
-  section { display: none; padding: 4rem 6rem; max-width: 2560px; margin: 0 auto; }
+  section { display: none; padding: 4rem 3rem; max-width: 2560px; margin: 0 auto; }
   section.active { display: block; }
 
   /* HERO */
@@ -150,14 +150,14 @@
   .Works-item:hover .Works-overlay-icon { opacity: 1; }
 
   /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 3rem; align-items: start; }
+  .about-grid { display: grid; grid-template-columns: 1fr 2.5fr 1.25fr; gap: 6rem; align-items: start; }
   .about-portrait { aspect-ratio: 30/38; background: linear-gradient(160deg, #2d223b 0%, #2a1d3b 40%, #352f21 100%); border: 2.5px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 2rem; }
   .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
   .about-name { font-size: 36px; font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 1.5rem; }
-  .about-bio { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 2rem; }
+  .about-bio { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 6rem; }
   .about-bio p + p { margin-top: 1rem; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 6rem; }
   .about-stat { border: 0.5px solid var(--border); padding: 1rem; }
   .about-stat-num { font-size: 28px; font-weight: 500; color: var(--accent); }
   .about-stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); margin-top: 2px; }
@@ -863,21 +863,18 @@
           </div>
         </div>
         <div class="about-tools-section">
-          <p class="about-eyebrow i18n-en">Exhibitions &amp; Projects</p>
-          <p class="about-eyebrow i18n-lv">Izstādes un projekti</p>
+          <p class="about-eyebrow i18n-en">Exhibitions</p>
+          <p class="about-eyebrow i18n-lv">Izstādes</p>
           </div>
                 <div class="about-exhibitions-list">
-            <p class="i18n-en">2026 – Group exhbition "Reset Factory Settings" – Riga, Latvia</p>
-            <p class="i18n-lv">2026 – Grupas izstāde "Atiestatīt rūpnīcas iestatījumus" – Rīga, Latvija</p>
-            <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
-            <p class="i18n-en">2025 – Group exhibition "Shifts" – Riga, Latvia</p>
-            <p class="i18n-lv">2025 – Grupas izstāde "Virzienmaiņas" – Rīga, Latvija</p>
-            <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
-            <p class="i18n-en">2024 – The Light Festival "Staro Rīga" – Riga, Latvia</p>
-            <p class="i18n-lv">2024 – Gaismas festivāls "Staro Rīga" – Rīga, Latvija</p>
-            <p> <i class="ti ti-arrow-narrow-up-dashed"></i> </p>
-            <p class="i18n-en">2022/23 – Group exhibition "Jam" – Latvia </p>
-            <p class="i18n-lv">2022/23 – Grupas izstade "Ievārījums" – Latvija</p>
+            <p class="i18n-en">&nbsp;<i class="ti ti-corner-up-right"></i> 2026 – Group exhbition <b>"Reset Factory Settings"</b> – Riga, Latvia</p> 
+            <p class="i18n-lv">&nbsp;<i class="ti ti-corner-up-right"></i> 2026 – Grupas izstāde <b>"Atiestatīt rūpnīcas iestatījumus"</b> – Rīga, Latvija</p>
+            <p> <i class="ti ti-arrow-up-dashed"></i> </p>
+            <p class="i18n-en">&nbsp;<i class="ti ti-corner-up-right"></i> 2025 – Group exhibition <b>"Shifts"</b> – Riga, Latvia</p>
+            <p class="i18n-lv">&nbsp;<i class="ti ti-corner-up-right"></i> 2025 – Grupas izstāde <b>"Virzienmaiņas"</b> – Rīga, Latvija</p>
+            <p> <i class="ti ti-arrow-up-dashed"></i> </p>
+            <p class="i18n-en">&nbsp;<i class="ti ti-corner-up-right"></i> 2022/23 – Group exhibition <b>"Jam"</b> – Latvia, different locations </p>
+            <p class="i18n-lv">&nbsp;<i class="ti ti-corner-up-right"></i> 2022/23 – Grupas izstade <b>"Ievārījums"</b> – Latvija, dažādas lokācijas</p>
         </div>
       </div>
 
