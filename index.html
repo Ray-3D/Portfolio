@@ -125,7 +125,7 @@
   .filter-btn { padding: 6px 18px; border: 0.5px solid var(--border); background: none; color: var(--ink-muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
   .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
   .filter-btn.active { background: var(--accent); color: var(--surface); border-color: var(--accent); }
-  .Works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+  .Works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5px; }
   .Works-item { aspect-ratio: 1; background: var(--surface-card); overflow: hidden; position: relative; cursor: pointer; }
   .Works-swatch { width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 1.25rem; transition: transform 0.4s ease; }
   .Works-item:hover .Works-swatch { transform: scale(1.03); }
@@ -150,7 +150,7 @@
   .Works-item:hover .Works-overlay-icon { opacity: 1; }
 
   /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 2.5fr 1.5fr; gap: 6rem; align-items: start; }
+  .about-grid { display: grid; grid-template-columns: 1fr 2.5fr 1.5fr; gap: 5rem; align-items: start; }
   .about-portrait { aspect-ratio: 30/38; background: linear-gradient(160deg, #2d223b 0%, #2a1d3b 40%, #352f21 100%); border: 2.5px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 2rem; }
   .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
@@ -404,6 +404,46 @@
         <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1789335118/copy_of_eatvtpv_moqzps.jpg" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
         <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
         <div class="Works-item-label"><span>Mixed Media</span><strong>Artist Book (2025)</strong></div>
+      </div>
+
+      <!-- Public Swimming Pool Tiles -->
+      <div class="Works-item" data-category="mixed"
+        style="aspect-ratio:16/9; grid-column: span 1;"
+        data-title-en="Public Swimming Pool Tiles (2025)"
+        data-title-lv="Publiskā peldbaseina flīzes (2025)"
+        data-media='[
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789854939/20251204_095314-2_m4gw8a.jpg", "credit": "Raimonds Krastiņš"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789854943/20251204_115805_dyxcyh.jpg", "credit": "Raimonds Krastiņš"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789854943/20251204_115827_l83vqn.jpg", "credit": "Raimonds Krastiņš"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789854942/20251204_115734_cw3cqy.jpg", "credit": "Raimonds Krastiņš"},
+         {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789854942/20251204_115751_a9avst.jpg", "credit": "Raimonds Krastiņš"}
+        ]'
+        >
+        <div class="work-desc-en" hidden>
+          <p>The work is conceived as an intentionally unaesthetic interpretation of swimming pool tiles, with 
+            elements integrated into the surface that are typically perceived as undesirable or repulsive – hair, 
+            fingernails, eyelashes, slimy deposits, and moss.</p>
+          <p>The work explores the position of “bad” or “disgusting” art within the contemporary aesthetic field, 
+            while simultaneously critically reflecting on the culture of luxury design. The tiles are conceived as 
+            a hypothetical commission by an aristocrat – as an object that demonstrates status through an extreme, 
+            seemingly repulsive visual solution. In this way, the work ironizes the mechanisms through which exclusivity 
+            is created, suggesting that distinction can be achieved not through beauty, but through a radically 
+            aestheticized sense of repulsion.</p>
+        </div>
+        <div class="work-desc-lv" hidden>
+          <p>Darbs veidots kā izteikti neestētiska peldbaseina flīžu interpretācija, kuras virsmā 
+          integrēti elementi, kas parasti tiek uztverti kā nevēlami vai atgrūdoši – mati, nagi, skropstas,
+          gļotaini nosēdumi un sūnas.</p>
+          <p>Darbs pēta “sliktas” vai “pretīgas” mākslas pozīciju mūsdienu estētiskajā laukā,
+          vienlaikus kritiski reflektējot par luksusa dizaina kultūru. Flīzes tiek interpretētas kā
+          hipotētisks augstmaņu pasūtījums – kā objekts, kas demonstrē statusu, izmantojot
+          ekstrēmu, it kā atgrūdošu vizuālo risinājumu. Šādā veidā darbs ironizē par ekskluzivitātes
+          radīšanas mehānismiem, kur atšķiršanās tiek panākta nevis ar skaistumu, bet ar radikālu
+          estetizētu nepatiku.</p>
+        </div>
+        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1789854943/20251204_115805_dyxcyh.jpg" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
+        <div class="Works-item-label"><span>Mixed Media</span><strong>Public Swimming Pool Tiles (2025)</strong></div>
       </div>
 
       <!-- BENEATH THE WATER LEVEL -->
@@ -1098,7 +1138,7 @@ function makeCredit(name) {
   const label = currentLang === 'lv' ? 'Foto' : 'Photo';
   const p = document.createElement('p');
   p.textContent = `${label}: ${name}`;
-  p.style.cssText = 'font-size: 11px; letter-spacing: 0.04em; color: var(--ink-dim); margin: -0.75rem 0 1rem; text-align: right;';
+  p.style.cssText = 'font-size: 13px; letter-spacing: 0.04em; color: var(--ink-dim); margin: -0.75rem 0 1rem; text-align: right;';
   return p;
 }
 
