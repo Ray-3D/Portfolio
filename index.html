@@ -197,10 +197,11 @@
   #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; overflow-y: auto; padding: 2rem; }
   #lightbox-inner { max-width: 900px; margin: 0 auto; padding-top: 2rem; }
   #lightbox-media { display: flex; flex-direction: column; gap: 1rem; }
-  #lightbox-info { margin-top: 2rem; border-top: 0.5px solid var(--border); padding-top: 1.5rem; }
+  #lightbox-photos { margin-top: 2rem; }
+#lightbox-info { margin-top: 2rem; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding-top: 1.5rem; padding-bottom: 0.5rem; }
   #lightbox-title { font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
   #lightbox-desc p { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 1rem; }
-  #lightbox-desc p em { font-style: italic; color: var(--ink-muted); }
+  #lightbox-desc p em { font-style: italic; color: var(--accent); }
   #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--accent); font-size: 28px; cursor: pointer; z-index: 101; }
   #lightbox-lang { position: fixed; bottom: 1.5rem; right: 2rem; background: none; border: 0.5px solid var(--accent-dim); color: var(--accent); font-size: 12px; letter-spacing: 0.1em; padding: 5px 14px; cursor: pointer; font-family: inherit; text-transform: uppercase; z-index: 101; transition: border-color 0.2s, background 0.2s, color 0.2s; }
   #lightbox-lang:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); }
@@ -299,6 +300,24 @@
     <div class="Works-grid">
 
 <!-- ADD YOUR WORKS HERE -->
+
+ <!--The Endless Chase -->
+      <div class="Works-item" data-category="3d"
+        style="aspect-ratio:16/9; grid-column: span 1;"
+        data-title-en="&quot;The Endless Chase&quot; (3D animation, 15 sec, 1440x1440px, 2026)"
+        data-title-lv="&quot;Bezgalīgā pakaļdzīšanās&quot; (3D animācija, 15 sek, 1440x1440px, 2026)"
+        data-media='[""]'
+        data-youtube='["qzJbxJYXcNo"]'>
+        <div class="work-desc-en" hidden>
+          <p>"The Endless Chase" is a 3D animation created in Blender, featuring a duck chasing a drifting maple leaf along a river that winds around the globe.</p>
+        </div>
+        <div class="work-desc-lv" hidden>
+          <p>"Bezgalīgā pakaļdzīšanās" ir datorgrafikas programmā Blender veidota 3D animācija, kurā pīle dzenas pakaļ peldošai kļavas lapai pa upi, kas vijas apkārt visai zemeslodei.</p>
+        </div>
+        <img src="https://res.cloudinary.com/cgope2r2/image/upload/w_600,q_auto,f_auto/v1794429925/The-Endless-Chase_Thumbnail-2_menqbf.png" alt="Image missing" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <div class="Works-overlay"><i class="ti ti-eye Works-overlay-icon"></i></div>
+        <div class="Works-item-label"><span>3D Animation</span><strong>"The Endless Chase" (2026)</strong></div>
+      </div>
 
  <!-- Bakalaurs -->
       <div class="Works-item" data-category="mixed"
@@ -409,8 +428,8 @@
 <!-- Public Swimming Pool Tiles -->
       <div class="Works-item" data-category="mixed"
         style="aspect-ratio:16/9; grid-column: span 1;"
-        data-title-en="Public Swimming Pool Tiles (2025)"
-        data-title-lv="Publiskā peldbaseina flīzes (2025)"
+        data-title-en="&quot;Public Swimming Pool Tiles&quot; (2025)"
+        data-title-lv="&quot;Publiskā peldbaseina flīzes&quot; (2025)"
         data-media='[
          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789859763/X40A0067-1_neubzv.jpg", "credit": "Laima Kalniņa"},
          {"src": "https://res.cloudinary.com/cgope2r2/image/upload/w_1920,q_auto,f_auto/v1789854943/20251204_115805_dyxcyh.jpg", "credit": "Raimonds Krastiņš"},
@@ -514,8 +533,8 @@
 <!-- FURBALL -->
       <div class="Works-item" data-category="3d"
         style="aspect-ratio:16/9; grid-column: span 1;"
-        data-title-en="Furball (2025)"
-        data-title-lv="Furball (2025)"
+        data-title-en="&quot;Furball&quot; (2025)"
+        data-title-lv="&quot;Furball&quot; (2025)"
         data-media='[""]'
         data-youtube='["of7wESp2o6s"]'>
         <div class="work-desc-en" hidden>
@@ -778,8 +797,8 @@
 <!--Air dancers in the forest -->
       <div class="Works-item" data-category="3d"
         style="aspect-ratio:16/9; grid-column: span 1;"
-        data-title-en="Air dancers in the forest (2024)"
-        data-title-lv="Gaisa dejotāji mežā (2024)"
+        data-title-en="&quot;Air dancers in the forest&quot; (2024)"
+        data-title-lv="&quot;Gaisa dejotāji mežā&quot; (2024)"
         data-media='[""]'
         data-youtube='["xk3nXVk4Xp8"]'>
         <div class="work-desc-en" hidden>
@@ -832,8 +851,8 @@
         <!-- ROŽU DD -->
      <div class="Works-item" data-category="3d"
   style="aspect-ratio:16/9; grid-column: span 1;"
-  data-title-en="Old_Riga_street_1993_08_13.mp4 (2022)"
-  data-title-lv="Vecrīgas_iela_1993_08_13.mp4 (2022)"
+  data-title-en="&quot;Old_Riga_street_1993_08_13.mp4&quot; (2022)"
+  data-title-lv="&quot;Vecrīgas_iela_1993_08_13.mp4&quot; (2022)"
   data-media='[""]'
   data-youtube='["4q-2JPkJvX4"]'>
 
@@ -852,6 +871,7 @@
   <div class="Works-item-label"><span>3D Animation</span><strong>Old_Riga_street_1993_08_13.mp4 (2022)</strong></div>
 </div>
 
+    </div><!-- end .Works-grid -->
   </section>
 
    <!-- ABOUT -->
@@ -867,14 +887,12 @@
       <div>
         <p class="about-eyebrow i18n-en">The artist</p>
         <p class="about-eyebrow i18n-lv">Mākslinieks</p>
-        <h2 class="about-name">Raimonds Krastiņš</h2>
+        <h2 class="about-name"></h2>
         <div class="about-bio">
-          <p class="i18n-en">I have been involved in art for as long as I can remember. Since the age of eight, I have attended art schools and extracurricular art programs, developing a foundation in both traditional and contemporary artistic practices.</p>
-          <p class="i18n-lv">Esmu iesaistījies mākslā, cik vien sevi atceros. Kopš astoņu gadu vecuma esmu apmeklējis mākslas skolas un ārpusklases mākslas programmas, attīstot pamatus gan tradicionālās, gan mūsdienu mākslinieciskās praksēs.</p>
-          <p class="i18n-en">In 2022, I graduated from the Janis Rozentāls Art School, and in 2026 I received a Bachelor's degree in Environmental Art at the Art Academy of Latvia. Today, I work primarily with Blender, creating 3D artworks and animations inspired by liminal spaces, overlooked architecture, and the atmosphere of everyday environments.</p>
-          <p class="i18n-lv">2022. gadā absolvēju Jaņa Rozentāla Mākslas skolu un 2026. gadā ieguvu bakalaura grādu vides mākslā Latvijas Mākslas akadēmijā. Pašlaik galvenokārt strādāju ar Blender, radot 3D mākslas darbus un animācijas, iedvesmojoties no liminālām telpām, nepamanītas arhitektūras un ikdienas vides atmosfēras.</p>
-          <p class="i18n-en">Through my work, I explore memories, places, and objects, creating art pieces that blur the boundaries between digital and physical space.</p>
-          <p class="i18n-lv">Savos darbos pētu atmiņas, vietas un objektus, radot mākslas darbus, kas sapludina robežu starp digitālo un fizisko telpu.</p>
+          <p class="i18n-en">Raimonds Krastiņš (2002) is a visual artist working primarily with 3D modelling and animation. Working in the 3D program Blender, he creates digital models, animations, and virtual environments, exploring world-building through both semi-realistic and stylized aesthetics. Occasionally his practice also extends into physical space through 3D printing and mixed media works, exploring the relationship between digital and physical forms.</p>
+          <p class="i18n-lv">Raimonds Krastiņš (2002) ir vizuālais mākslinieks, kurš galvenokārt strādā ar 3D modelēšanu un animāciju. Izmantojot 3D datorgrafikas programmu Blender, veido digitālas pasaules un animācijas gan daļēji reālistiskā, gan stilizētā estētikā. Viņa praksē būtiska ir interese par 3D vidi kā telpu eksperimentiem un alternatīvu pasauļu veidošanai, kas ļauj atkāpties no ikdienas realitātes.</p>
+          <p class="i18n-en">In 2022, Krastiņš graduated from the Janis Rozentāls Art School. In 2026, he received a Bachelor's degree in Environmental Art from the Art Academy of Latvia, where he is currently pursuing a Master's degree in the same field.</p>
+          <p class="i18n-lv">2022. gadā Raimonds Krastiņš absolvēja Jaņa Rozentāla Mākslas skolu. 2026. gadā viņš ieguva bakalaura grādu Latvijas Mākslas akadēmijas Vides mākslas apakšnozarē, kur šobrīd turpina studijas maģistra programmā tajā pašā jomā.</p>
         </div>
         <div class="about-tools-section">
           <p class="about-eyebrow i18n-en">Primary Tools</p>
@@ -925,7 +943,7 @@
           <p class="about-eyebrow i18n-lv">Izstādes</p>
           </div>
                 <div class="about-exhibitions-list">
-            <p class="i18n-en">&nbsp;<i class="ti ti-corner-up-right"></i> 2026 – Group exhbition <b>"Reset Factory Settings"</b> – Riga, Latvia</p> 
+            <p class="i18n-en">&nbsp;<i class="ti ti-corner-up-right"></i> 2026 – Group exhibition <b>"Reset Factory Settings"</b> – Riga, Latvia</p> 
             <p class="i18n-lv">&nbsp;<i class="ti ti-corner-up-right"></i> 2026 – Grupas izstāde <b>"Atiestatīt rūpnīcas iestatījumus"</b> – Rīga, Latvija</p>
             <!---  <p> <i class="ti ti-arrow-up-dashed"></i> </p> -->
             <p class="i18n-en">&nbsp;<i class="ti ti-corner-up-right"></i> 2025 – Group exhibition <b>"Shifts"</b> – Riga, Latvia</p>
@@ -993,6 +1011,7 @@
         <h2 id="lightbox-title"></h2>
         <div id="lightbox-desc"></div>
       </div>
+       <div id="lightbox-photos"></div>
     </div>
   </div>
 
@@ -1050,7 +1069,21 @@ function openLightbox(item) {
   const youtubeIds = JSON.parse(item.dataset.youtube || '[]');
   const aframeUrl = item.dataset.aframeUrl || '';
 
-  document.getElementById('lightbox-title').textContent = title;
+    // Title: if it ends with a bracketed part, e.g. `"The Endless Chase" (3D animation, 15 sec, 1440x1440px, 2026)`,
+  // show the main title on the first line and the bracketed specs on a second, smaller line.
+  const titleEl = document.getElementById('lightbox-title');
+  titleEl.textContent = '';
+  const titleMatch = title.match(/^(.*?)\s*\(([^()]*)\)\s*$/);
+  if (titleMatch && titleMatch[1]) {
+    titleEl.appendChild(document.createTextNode(titleMatch[1]));
+    const specs = document.createElement('span');
+    specs.textContent = titleMatch[2];
+    specs.style.cssText = 'display: block; margin-top: 0.4rem; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; color: var(--accent);';
+    titleEl.appendChild(specs);
+  } else {
+    titleEl.textContent = title;
+  }
+
 
   // Description
   const lightboxDesc = document.getElementById('lightbox-desc');
@@ -1064,8 +1097,12 @@ function openLightbox(item) {
     });
   }
 
+    // Videos / A-Frame go in #lightbox-media (top). Title + description follow,
+  // and the images/photos from data-media go in #lightbox-photos (below the description).
   const container = document.getElementById('lightbox-media');
   container.innerHTML = '';
+  const photos = document.getElementById('lightbox-photos');
+  photos.innerHTML = '';
 
   // A-Frame projects
   if (aframeUrl) {
@@ -1127,19 +1164,20 @@ function openLightbox(item) {
         video.autoplay = true;
         video.muted = true;
         video.style.cssText = 'width: 100%; border: 0.5px solid var(--border); display: block;';
-        container.appendChild(video);
-        if (credit) container.appendChild(makeCredit(credit));
-        else { const spacer = document.createElement('div'); spacer.style.marginBottom = '1rem'; container.appendChild(spacer); }
+        photos.appendChild(video);
+        if (credit) photos.appendChild(makeCredit(credit));
+        else { const spacer = document.createElement('div'); spacer.style.marginBottom = '1rem'; photos.appendChild(spacer); }
       } else {
         const img = document.createElement('img');
         img.src = src;
         img.style.cssText = 'width: 100%; display: block; border: 0.5px solid var(--border);';
-        container.appendChild(img);
-        if (credit) container.appendChild(makeCredit(credit));
-        else { const spacer = document.createElement('div'); spacer.style.marginBottom = '1rem'; container.appendChild(spacer); }
+        photos.appendChild(img);
+        if (credit) photos.appendChild(makeCredit(credit));
+        else { const spacer = document.createElement('div'); spacer.style.marginBottom = '1rem'; photos.appendChild(spacer); }
       }
     });
   }
+
 
   if (!aframeUrl && (!youtubeIds || youtubeIds.length === 0) && !hasRealMedia) {
     container.innerHTML = '<p style="color:var(--ink-dim); font-size:13px;">No media added yet.</p>';
@@ -1156,14 +1194,17 @@ function makeCredit(name) {
   const label = currentLang === 'lv' ? 'Foto' : 'Photo';
   const p = document.createElement('p');
   p.textContent = `${label}: ${name}`;
-  p.style.cssText = 'font-size: 13px; letter-spacing: 0.04em; color: var(--ink-dim); margin: -0.75rem 0 1rem; text-align: right;';
+  p.style.cssText = 'font-size: 13px; letter-spacing: 0.04em; color: var(--ink-dim); margin: 0.5rem 0 1.5rem; text-align: right;';
   return p;
 }
+
+
 
 function closeLightbox() {
   document.getElementById('lightbox').style.display = 'none';
   document.body.style.overflow = '';
   document.getElementById('lightbox-media').innerHTML = '';
+  document.getElementById('lightbox-photos').innerHTML = '';
   window._activeLightboxItem = null;
 }
 
